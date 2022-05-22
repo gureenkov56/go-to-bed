@@ -1,13 +1,64 @@
-$primarycolor: #aca;
-
-.asd {
-	display: grid;
-}
+$primaryBgcolor: #94B6ED;
+$secondBgcolor: #8AEBDB;
+$thirdBgcolor: #A698EE;
 
 body {
-	color: $primarycolor;
-	background-color: #ffa;
-	a {
-		text-decoration: none;
+	margin: 0;
+	color: white;
+	background-color: $primaryBgcolor;
+
+	.bg {
+		position: absolute;
+		filter: blur(150px);
+		transform: rotate(-45deg);
+		border-radius: 67px;
+
+
+		&-second {
+			transform: rotate(-45deg);
+			background-color: $secondBgcolor;
+			height: 100vh;
+			width: 100vw;
+			right: -50%;
+			top: 20%;
+
+			animation: 3s infinite alternate secondtransform;
+		}
+
+		&-third {
+			background-color: $thirdBgcolor;
+			width: 100%;
+			height: 100vw;
+			top: 80%;
+			left: -30%;
+
+			animation: 3s infinite alternate thirdtransform;
+
+		}
+
+	}
+}
+
+
+
+@keyframes secondtransform {
+	from {
+		border-radius: 67px;
+		right: -50%;
+	}
+
+	to {
+		border-radius: 200px;
+		right: -80%;
+	}
+}
+
+@keyframes thirdtransform {
+	from {
+		left: -60%;
+	}
+
+	to {
+		left: -30%;
 	}
 }
