@@ -1,14 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300&display=swap');
+
 $primaryBgcolor: #94B6ED;
 $secondBgcolor: #8AEBDB;
 $thirdBgcolor: #A698EE;
+$blueBase: rgba(69, 127, 218, .3);
+$oneCycle: 200px;
 
 body {
 	margin: 0;
 	color: white;
 	background-color: $primaryBgcolor;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+
+	h1 {
+		font-weight: 200;
+		text-align: center;
+	}
 
 	.bg {
-		position: absolute;
+		position: fixed;
 		filter: blur(150px);
 		transform: rotate(-45deg);
 		border-radius: 67px;
@@ -37,6 +48,144 @@ body {
 		}
 
 	}
+
+	header {
+		display: flex;
+		justify-content: space-between;
+		padding: .3rem;
+	}
+
+	.content-container {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 10px;
+		z-index: 5;
+		position: relative;
+	}
+
+	.wrapper__current-cycle {
+		display: flex;
+		justify-content: center;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+
+		.current-cycle {
+			background-color: $blueBase;
+			padding: .1rem 1rem;
+		}
+	}
+
+	.cycle-graphic {
+		&__container {
+			background-color: rgba(0, 0, 0, 0.4);
+			overflow-x: scroll;
+			padding-bottom: 1rem;
+		}
+
+		&__wrapper {
+			display: flex;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-bottom: 2px solid white;
+			padding-bottom: 1rem;
+			position: relative;
+			min-width: calc($oneCycle * 6 + $oneCycle / 6);
+
+			.dot {
+				width: 6px;
+				height: 6px;
+				background-color: #fff;
+				position: absolute;
+				border-radius: 50%;
+
+				&-1 {
+					bottom: -4px;
+				}
+
+				&-2 {
+					bottom: -4px;
+					left: calc($oneCycle + $oneCycle / 6);
+				}
+
+
+			}
+		}
+
+		&__fall-block {
+			background-color: #caa;
+			min-width: calc($oneCycle / 6);
+			height: 300px;
+			border-top: 2px dashed white;
+		}
+
+		&__first {
+			min-width: $oneCycle;
+			background-color: #aac;
+			display: flex;
+
+			.one-step {
+				background-color: #cfa;
+				width: 5%;
+				height: 100%;
+
+				div {
+					height: 50%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+				}
+			}
+
+			.second-step {
+				background-color: #cca;
+				width: 10%;
+				height: 100%;
+
+				.top {
+					height: 50%;
+				}
+
+				.bottom {
+					height: 30%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+				}
+			}
+
+			.third-step {
+				background-color: #aaf;
+				width: 75%;
+
+				.top {
+					height: 40%;
+				}
+
+				.middle {
+					height: 40%;
+					border-right: 2px solid white;
+				}
+
+				.bottom {
+					height: 20%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+					border-right: 2px solid white;
+				}
+			}
+
+			.fourth-step {
+				width: 10%;
+
+				div {
+					height: 40%;
+					border-bottom: 2px solid white;
+					border-right: 2px solid white;
+				}
+			}
+
+
+		}
+	}
+
+
 }
 
 

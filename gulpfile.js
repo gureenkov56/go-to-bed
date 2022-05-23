@@ -38,6 +38,7 @@ exports.startwatch = startwatch;
 exports.cleanDistFolder = cleanDistFolder;
 exports.htmlAndPhp = htmlAndPhp;
 
+
 exports.start = series(cleanDistFolder, htmlAndPhp, styles, startwatch);
 
 
