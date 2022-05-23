@@ -95,19 +95,17 @@ body {
 				padding-top: 3px;
 
 				.time {
-					width: 40px;
+					min-width: $oneCycle;
 					text-align: center;
 
-					&-1 {
-						font-size: .9rem;
+					&:first-child {
+						min-width: calc($oneCycle / 2 + 40px);
+						text-align: left;
+						font-size: 1rem;
 					}
 
-					&-2 {
-						margin-left: calc($oneCycle - 22px);
-					}
-
-					&-3 {
-						margin-left: calc($oneCycle - 40px);
+					&:last-child {
+						font-size: 1rem;
 					}
 				}
 			}
@@ -135,6 +133,18 @@ body {
 
 				&-3 {
 					left: calc($oneCycle * 2 + $oneCycle / 6);
+				}
+
+				&-4 {
+					left: calc($oneCycle * 3 + $oneCycle / 6);
+				}
+
+				&-5 {
+					left: calc($oneCycle * 4 + $oneCycle / 6);
+				}
+
+				&-6 {
+					left: calc($oneCycle * 5 + $oneCycle / 6);
 				}
 
 
@@ -297,6 +307,198 @@ body {
 
 			}
 		}
+
+		&__third {
+			min-width: $oneCycle;
+			background-color: #ccc;
+			display: flex;
+
+			.one-step {
+				background-color: #fac;
+				width: 15%;
+				height: 25%;
+				border-bottom: 2px solid white;
+			}
+
+			.second-step {
+				background-color: #aaa;
+				width: 5%;
+
+				.top {
+					height: 25%;
+				}
+
+				.bottom {
+					height: 25%;
+					width: 100%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+				}
+			}
+
+			.third-step {
+				background-color: #faa;
+				width: 50%;
+
+				.top {
+					height: 50%;
+				}
+
+				.bottom {
+					height: 30%;
+					width: 100%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+				}
+			}
+
+			.fourth-step {
+				background-color: #cca;
+				width: 10%;
+
+				.top {
+					height: 80%;
+				}
+
+				.bottom {
+					height: 20%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+					border-right: 2px solid white;
+				}
+			}
+
+			.fifth-step {
+				background-color: #aca;
+				width: 5%;
+
+				.top {
+					height: 25%;
+				}
+
+				.bottom {
+					height: 55%;
+					border-bottom: 2px solid white;
+					border-right: 2px solid white;
+				}
+			}
+
+			.sixth-step {
+				background-color: #cca;
+				width: 15%;
+				height: 25%;
+				border-bottom: 2px solid white;
+			}
+		}
+
+		&__fourth {
+			min-width: $oneCycle;
+			background-color: #ccc;
+			display: flex;
+
+			.first-step {
+				width: 30%;
+				background-color: #cca;
+
+				.top {
+					height: 25%;
+				}
+
+				.middle {
+					height: 50%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+				}
+			}
+
+			.second-step {
+				width: 20%;
+				background-color: #cfa;
+
+				.top {
+					height: 25%;
+				}
+
+				.middle {
+					height: 25%;
+					border-bottom: 2px solid white;
+					border-right: 2px solid white;
+				}
+
+				.bottom {
+					height: 25%;
+					border-left: 2px solid white;
+				}
+			}
+
+			.third-step {
+				width: 50%;
+				background-color: #aac;
+				height: 25%;
+				border-bottom: 2px solid white;
+			}
+		}
+
+		&__fifth {
+			min-width: $oneCycle;
+			background-color: #ccc;
+			display: flex;
+
+			.first-step {
+				width: 20%;
+				background-color: #aaa;
+
+				.top {
+					height: 25%;
+				}
+
+				.middle {
+					height: 50%;
+					border-bottom: 2px solid white;
+					border-left: 2px solid white;
+					border-right: 2px solid white;
+				}
+			}
+
+			.second-step {
+				width: 70%;
+				background-color: #fcc;
+
+				.top {
+					height: 10%;
+				}
+
+				.middle {
+					height: 15%;
+					border-bottom: 2px solid white;
+					border-right: 2px solid white;
+				}
+			}
+		}
+
+		&__sixth {
+			min-width: $oneCycle;
+			background-color: #fac;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.good-morning-text {
+				text-align: center;
+
+				h3 {
+					margin: 0;
+					padding: 0;
+				}
+
+				p {
+					margin-top: .5rem;
+					font-size: .9rem;
+				}
+			}
+		}
+
+
 	}
 
 	button {
