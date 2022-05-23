@@ -82,9 +82,12 @@ body {
 
 	.cycle-graphic {
 		&__container {
-			background-color: rgba(0, 0, 0, 0.4);
 			overflow-x: scroll;
 			padding-bottom: 1rem;
+
+			&::-webkit-scrollbar {
+				width: 0;
+			}
 
 			.time-list {
 				font-size: .8rem;
@@ -113,7 +116,6 @@ body {
 
 		&__wrapper {
 			display: flex;
-			background-color: rgba(0, 0, 0, 0.6);
 			border-bottom: 2px solid white;
 			padding-bottom: 1rem;
 			position: relative;
@@ -152,7 +154,6 @@ body {
 		}
 
 		&__fall-block {
-			background-color: #caa;
 			min-width: calc($oneCycle / 6);
 			height: 300px;
 			border-top: 2px dashed white;
@@ -160,11 +161,9 @@ body {
 
 		&__first {
 			min-width: $oneCycle;
-			background-color: #aac;
 			display: flex;
 
 			.one-step {
-				background-color: #cfa;
 				width: 5%;
 				height: 100%;
 
@@ -176,7 +175,6 @@ body {
 			}
 
 			.second-step {
-				background-color: #cca;
 				width: 10%;
 				height: 100%;
 
@@ -192,7 +190,6 @@ body {
 			}
 
 			.third-step {
-				background-color: #aaf;
 				width: 75%;
 
 				.top {
@@ -225,18 +222,15 @@ body {
 
 		&__second {
 			min-width: $oneCycle;
-			background-color: #ccc;
 			display: flex;
 
 			.one-step {
-				background-color: #fac;
 				width: 15%;
 				height: 25%;
 				border-bottom: 2px solid white;
 			}
 
 			.second-step {
-				background-color: #aaa;
 				width: 5%;
 
 				.top {
@@ -252,7 +246,6 @@ body {
 			}
 
 			.third-step {
-				background-color: #faa;
 				width: 20%;
 
 				.top {
@@ -268,7 +261,6 @@ body {
 			}
 
 			.fourth-step {
-				background-color: #cca;
 				width: 40%;
 
 				.top {
@@ -284,7 +276,6 @@ body {
 			}
 
 			.fifth-step {
-				background-color: #aca;
 				width: 5%;
 
 				.top {
@@ -299,7 +290,6 @@ body {
 			}
 
 			.sixth-step {
-				background-color: #cca;
 				width: 15%;
 				height: 30%;
 				border-bottom: 2px solid white;
@@ -310,18 +300,15 @@ body {
 
 		&__third {
 			min-width: $oneCycle;
-			background-color: #ccc;
 			display: flex;
 
 			.one-step {
-				background-color: #fac;
 				width: 15%;
 				height: 25%;
 				border-bottom: 2px solid white;
 			}
 
 			.second-step {
-				background-color: #aaa;
 				width: 5%;
 
 				.top {
@@ -337,7 +324,6 @@ body {
 			}
 
 			.third-step {
-				background-color: #faa;
 				width: 50%;
 
 				.top {
@@ -353,7 +339,6 @@ body {
 			}
 
 			.fourth-step {
-				background-color: #cca;
 				width: 10%;
 
 				.top {
@@ -369,7 +354,6 @@ body {
 			}
 
 			.fifth-step {
-				background-color: #aca;
 				width: 5%;
 
 				.top {
@@ -384,7 +368,6 @@ body {
 			}
 
 			.sixth-step {
-				background-color: #cca;
 				width: 15%;
 				height: 25%;
 				border-bottom: 2px solid white;
@@ -393,12 +376,10 @@ body {
 
 		&__fourth {
 			min-width: $oneCycle;
-			background-color: #ccc;
 			display: flex;
 
 			.first-step {
 				width: 30%;
-				background-color: #cca;
 
 				.top {
 					height: 25%;
@@ -413,7 +394,6 @@ body {
 
 			.second-step {
 				width: 20%;
-				background-color: #cfa;
 
 				.top {
 					height: 25%;
@@ -433,7 +413,6 @@ body {
 
 			.third-step {
 				width: 50%;
-				background-color: #aac;
 				height: 25%;
 				border-bottom: 2px solid white;
 			}
@@ -441,12 +420,10 @@ body {
 
 		&__fifth {
 			min-width: $oneCycle;
-			background-color: #ccc;
 			display: flex;
 
 			.first-step {
 				width: 20%;
-				background-color: #aaa;
 
 				.top {
 					height: 25%;
@@ -462,7 +439,6 @@ body {
 
 			.second-step {
 				width: 70%;
-				background-color: #fcc;
 
 				.top {
 					height: 10%;
@@ -478,7 +454,6 @@ body {
 
 		&__sixth {
 			min-width: $oneCycle;
-			background-color: #fac;
 			display: flex;
 			justify-content: center;
 			align-items: center;
