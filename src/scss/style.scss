@@ -13,11 +13,6 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
 
-	h1 {
-		font-weight: 200;
-		text-align: center;
-	}
-
 	.bg {
 		position: fixed;
 		filter: blur(150px);
@@ -61,6 +56,16 @@ body {
 		padding: 10px;
 		z-index: 5;
 		position: relative;
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: 200;
+			text-align: center;
+		}
 	}
 
 	.wrapper__current-cycle {
@@ -80,6 +85,32 @@ body {
 			background-color: rgba(0, 0, 0, 0.4);
 			overflow-x: scroll;
 			padding-bottom: 1rem;
+
+			.time-list {
+				font-size: .8rem;
+				list-style-type: none;
+				display: flex;
+				margin: 0;
+				padding: 0;
+				padding-top: 3px;
+
+				.time {
+					width: 40px;
+					text-align: center;
+
+					&-1 {
+						font-size: .9rem;
+					}
+
+					&-2 {
+						margin-left: calc($oneCycle - 22px);
+					}
+
+					&-3 {
+						margin-left: calc($oneCycle - 40px);
+					}
+				}
+			}
 		}
 
 		&__wrapper {
@@ -96,14 +127,14 @@ body {
 				background-color: #fff;
 				position: absolute;
 				border-radius: 50%;
-
-				&-1 {
-					bottom: -4px;
-				}
+				bottom: -4px;
 
 				&-2 {
-					bottom: -4px;
 					left: calc($oneCycle + $oneCycle / 6);
+				}
+
+				&-3 {
+					left: calc($oneCycle * 2 + $oneCycle / 6);
 				}
 
 
@@ -180,11 +211,148 @@ body {
 					border-right: 2px solid white;
 				}
 			}
+		}
 
+		&__second {
+			min-width: $oneCycle;
+			background-color: #ccc;
+			display: flex;
 
+			.one-step {
+				background-color: #fac;
+				width: 15%;
+				height: 25%;
+				border-bottom: 2px solid white;
+			}
+
+			.second-step {
+				background-color: #aaa;
+				width: 5%;
+
+				.top {
+					height: 25%;
+				}
+
+				.bottom {
+					height: 25%;
+					width: 100%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+				}
+			}
+
+			.third-step {
+				background-color: #faa;
+				width: 20%;
+
+				.top {
+					height: 50%;
+				}
+
+				.bottom {
+					height: 30%;
+					width: 100%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+				}
+			}
+
+			.fourth-step {
+				background-color: #cca;
+				width: 40%;
+
+				.top {
+					height: 80%;
+				}
+
+				.bottom {
+					height: 20%;
+					border-left: 2px solid white;
+					border-bottom: 2px solid white;
+					border-right: 2px solid white;
+				}
+			}
+
+			.fifth-step {
+				background-color: #aca;
+				width: 5%;
+
+				.top {
+					height: 30%;
+				}
+
+				.bottom {
+					height: 50%;
+					border-bottom: 2px solid white;
+					border-right: 2px solid white;
+				}
+			}
+
+			.sixth-step {
+				background-color: #cca;
+				width: 15%;
+				height: 30%;
+				border-bottom: 2px solid white;
+				border-right: 2px solid white;
+
+			}
 		}
 	}
 
+	button {
+		background-color: $blueBase;
+		border: none;
+		border-radius: 4px;
+		box-shadow: 0 4px 4px 0 rgba($color: #000000, $alpha: .4);
+		color: white;
+
+		font-family: inherit;
+		font-weight: 200;
+		cursor: pointer;
+		transition: all .1s;
+
+		&:active {
+			box-shadow: 0 0 0 0 rgba($color: #000000, $alpha: .4);
+
+		}
+
+		&.big {
+			width: 250px;
+			height: 45px;
+			display: block;
+			margin: 10px auto;
+		}
+	}
+
+	.perfect-time {
+		&__h2 {
+			margin-top: 5rem;
+		}
+
+		&__number {
+			text-align: center;
+			font-size: 2.5rem;
+		}
+
+		&__button {
+			margin-top: 2rem !important;
+			margin-bottom: 3rem !important;
+		}
+
+	}
+
+	.easy-wake-up {
+		&__wrapper {
+			display: flex;
+			justify-content: space-around;
+			max-width: 600px;
+			margin: 1rem auto;
+		}
+
+		&__item {
+			padding: 4px 10px;
+		}
+	}
 
 }
 
