@@ -13,6 +13,10 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
 
+	.d-none {
+		display: none;
+	}
+
 	.bg {
 		position: fixed;
 		filter: blur(150px);
@@ -48,12 +52,13 @@ body {
 		display: flex;
 		justify-content: space-between;
 		padding: .3rem;
+		margin-bottom: 1rem;
 	}
 
 	.content-container {
 		max-width: 1000px;
 		margin: 0 auto;
-		padding: 10px;
+		padding: 1rem;
 		z-index: 5;
 		position: relative;
 
@@ -121,6 +126,25 @@ body {
 			position: relative;
 			min-width: calc($oneCycle * 6 + $oneCycle / 6);
 
+			&__deep-zone {
+				background-color: $blueBase;
+				height: 2rem;
+				width: calc($oneCycle * 3);
+				position: absolute;
+				top: calc(310px - 2rem);
+				left: 2rem;
+				cursor: pointer;
+			}
+
+			&__short-wake-ups {
+				background-color: rgba($color: $thirdBgcolor, $alpha: .4);
+				height: 2rem;
+				width: calc($oneCycle * 1.5);
+				position: absolute;
+				left: $oneCycle;
+				cursor: pointer;
+			}
+
 			.dot {
 				width: 6px;
 				height: 6px;
@@ -157,6 +181,10 @@ body {
 			min-width: calc($oneCycle / 6);
 			height: 300px;
 			border-top: 2px dashed white;
+			&:hover {
+				background-color: rgba($color: $secondBgcolor, $alpha: .3);
+				cursor: pointer;
+			}
 		}
 
 		&__first {
@@ -482,6 +510,7 @@ body {
 		border-radius: 4px;
 		box-shadow: 0 4px 4px 0 rgba($color: #000000, $alpha: .4);
 		color: white;
+		font-size: 1rem;
 
 		font-family: inherit;
 		font-weight: 200;
@@ -524,10 +553,50 @@ body {
 			justify-content: space-around;
 			max-width: 600px;
 			margin: 1rem auto;
+			margin-bottom: 3rem;
 		}
 
 		&__item {
 			padding: 4px 10px;
+		}
+	}
+
+	.make-better {
+		&__h2 {
+			margin-top: 5rem;
+		}
+	}
+
+	.footer {
+		position: relative;
+		height: 4rem;
+
+		&__bg {
+			background-color: rgba($color: $thirdBgcolor, $alpha: 1);
+			position: absolute;
+			width: 50%;
+			height: 100%;
+			filter: blur(50px);
+			left: 0;
+			right: 0;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		&__text {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			font-size: .7rem;
+			padding-top: 1rem;
+			z-index: 1;
+
+
+		}
+
+		a {
+			color: white;
 		}
 	}
 
