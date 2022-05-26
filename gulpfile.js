@@ -4,6 +4,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const sass = require('gulp-sass')(require('sass'));
 const clean = require('gulp-clean');
 const cleanCSS = require('gulp-clean-css');
+var uglify = require('gulp-uglify');
 
 
 
@@ -19,6 +20,7 @@ function styles() {
 function startwatch() {
 	watch('src/scss/*', styles);
 	watch(['src/*.html', 'src/*.php', 'src/**/*.html', 'src/**/*.php'], htmlAndPhp);
+	watch('src/js/*.js', js);
 }
 
 async function cleanDistFolder() {
@@ -31,15 +33,23 @@ function htmlAndPhp() {
 	.pipe(dest('dist/'))
 }
 
+function js() {
+	return src('src/js/*.js')
+	.pipe(uglify())
+	.pipe(dest('dist/js/'))
+}
+
 
 
 exports.styles = styles;
 exports.startwatch = startwatch;
 exports.cleanDistFolder = cleanDistFolder;
 exports.htmlAndPhp = htmlAndPhp;
+exports.js = js;
 
 
-exports.start = series(cleanDistFolder, htmlAndPhp, styles, startwatch);
+
+exports.start = series(cleanDistFolder, htmlAndPhp, styles, js, startwatch);
 
 
 
