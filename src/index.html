@@ -22,8 +22,8 @@
 		</header>
 
 		<h1>Цикл сна</h1>
-		<div class="wrapper__current-cycle">
-			<span class="current-cycle">Глубокий восстановительный сон</span>
+		<div class="wrapper__current-cycle" >
+			<span class="current-cycle" id="currentCycle">Глубокий восстановительный сон</span>
 		</div>
 
 		<div class="cycle-graphic__container">
@@ -35,8 +35,8 @@
 				<div class="dot dot-5"></div>
 				<div class="dot dot-6"></div>
 
-				<div class="cycle-graphic__wrapper__deep-zone"></div>
-				<div class="cycle-graphic__wrapper__short-wake-ups"></div>
+				<div class="cycle-graphic__wrapper__deep-zone" id="deepZone"></div>
+				<div class="cycle-graphic__wrapper__short-wake-ups" id="shortWakeUpZone"></div>
 
 
 
@@ -44,7 +44,7 @@
 
 
 
-				<div class="cycle-graphic__fall-block"></div>
+				<div class="cycle-graphic__fall-block" id="fallBlock"></div>
 
 				<div class="cycle-graphic__first">
 					<div class="one-step">
@@ -205,6 +205,6 @@
 
 </body>
 
-<script src="/js/app.min.js"></script>
+<script src="./js/app.js"></script>
 
 </html>

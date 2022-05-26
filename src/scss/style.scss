@@ -83,6 +83,14 @@ body {
 			background-color: $blueBase;
 			padding: .1rem 1rem;
 		}
+
+		span {
+			text-align: center;
+		}
+
+		@media screen and (max-width: 400px) {
+			font-size: .9rem;
+		}
 	}
 
 	.cycle-graphic {
