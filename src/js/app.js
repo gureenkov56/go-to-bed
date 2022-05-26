@@ -11,12 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
 	 * Sleep zones *
 	 ***************/
 	shortWakeUpZone.addEventListener('click', (event) => sleepZones('Незаметные короткие пробуждения', event.target));
+	shortWakeUpZone.addEventListener('mouseover', (event) => sleepZones('Незаметные короткие пробуждения', event.target));
+
 	deepZone.addEventListener('click', (event) => sleepZones('Глубокий восстановительный сон', event.target));
+	deepZone.addEventListener('mouseover', (event) => sleepZones('Глубокий восстановительный сон', event.target));
+
 	fallBlock.addEventListener('click', (event) => sleepZones('Погружение в сон', event.target));
+	fallBlock.addEventListener('mouseover', (event) => sleepZones('Погружение в сон', event.target));
+
 
 
 	function sleepZones(text, eventTarget) {
-		console.log(currentCycle);
 		currentCycle.innerHTML = text;
 		currentCycle.style.backgroundColor = window.getComputedStyle(eventTarget).backgroundColor;;
 	}
