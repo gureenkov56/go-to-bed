@@ -22,7 +22,7 @@
 		</header>
 
 		<h1>Цикл сна</h1>
-		<div class="wrapper__current-cycle" >
+		<div class="wrapper__current-cycle">
 			<span class="current-cycle" id="currentCycle">Глубокий восстановительный сон</span>
 		</div>
 
@@ -37,12 +37,6 @@
 
 				<div class="cycle-graphic__wrapper__deep-zone" id="deepZone"></div>
 				<div class="cycle-graphic__wrapper__short-wake-ups" id="shortWakeUpZone"></div>
-
-
-
-
-
-
 
 				<div class="cycle-graphic__fall-block" id="fallBlock"></div>
 
@@ -172,7 +166,7 @@
 			</div>
 		</div>
 
-		<button class="big">Настроить</button>
+		<button class="big open-setting-modal">Настроить</button>
 
 		<h2 class="perfect-time__h2">Идеальное время пробуждения</h2>
 		<div class="perfect-time__number">6:30</div>
@@ -199,8 +193,28 @@
 
 
 		</footer>
+	</div>
 
 
+	<div class="modal">
+		<div class="modal__container">
+			<div class="modal__close">×</div>
+			<div class="modal__settings">
+				<h3>Ложусь спать в...</h3>
+				<input type="time" value="23:00">
+				<button class="big">Рассчитать от 23:00</button>
+				<p>или</p>
+				<h3>Нужно проснуться в...</h3>
+				<input type="time" value="07:00">
+				<button class="big">Рассчитать к 07:00</button>
+
+				<p class="time-for-falling">Чтобы уснуть мне нужно
+					<input type="number" value="15">
+					минут
+				</p>
+				<p class="note">В среднем требуется 15 минут</p>
+			</div>
+		</div>
 	</div>
 
 </body>

@@ -190,7 +190,7 @@ body {
 			height: 300px;
 			border-top: 2px dashed white;
 			background-color: rgba($color: $secondBgcolor, $alpha: .3);
-			background: linear-gradient(180deg, rgba($color: $secondBgcolor, $alpha: .3) 50%, rgba(166,152,238,0) 100%);
+			background: linear-gradient(180deg, rgba($color: $secondBgcolor, $alpha: .3) 50%, rgba(166, 152, 238, 0) 100%);
 			cursor: pointer;
 		}
 
@@ -605,6 +605,99 @@ body {
 		a {
 			color: white;
 		}
+	}
+
+	.modal {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background-color: rgba(0, 0, 0, .5);
+		z-index: 5;
+		opacity: 0;
+		visibility: hidden;
+		transition: visibility .7s, opacity .7s;
+
+		h3 {
+			font-weight: 100;
+		}
+
+		&__container {
+			position: absolute;
+			top: 6rem;
+			opacity: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			max-width: 500px;
+			margin-right: auto;
+			
+			margin-left: auto;
+			background-color: #fff;
+			border-radius: 20px 20px 0 0;
+			background: linear-gradient(rgba(148, 182, 237, 1) 50%, rgba(69, 127, 218, 1) 100%);
+
+			visibility: hidden;
+			opacity: 0;
+
+			transition: visibility .7s, opacity .7s, top .7s;
+		}
+
+		&__close {
+			font-size: 3rem;
+			text-align: left;
+			width: 60px;
+			text-align: center;
+			border-radius: 20px;
+			margin: 0 0 0 auto;
+			cursor: pointer;
+		}
+
+		&__settings {
+			text-align: center;
+
+			input {
+				font-family: 'Montserrat', sans-serif;
+				border-radius: 5px;
+				background-color: rgba(0, 0, 0, .5);
+				border: none;
+				color: white;
+			}
+
+			input[type="time"] {
+				font-size: 1.5rem;
+				padding: 10px 3rem;
+			}
+
+			input[type="number"] {
+				font-size: 1rem;
+				width: 3rem;
+				text-align: center;
+			}
+
+			/* Chrome, Safari, Edge, Opera */
+			input::-webkit-outer-spin-button,
+			input::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+
+			/* Firefox */
+			input[type=number] {
+				-moz-appearance: textfield;
+			}
+
+			.time-for-falling {
+				margin-top: 5rem;
+			}
+
+			.note {
+				font-size: .8rem;
+			}
+		}
+
+
 	}
 
 }

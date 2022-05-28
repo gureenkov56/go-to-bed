@@ -4,7 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		deepZone = document.getElementById('deepZone'),
 		shortWakeUpZone = document.getElementById('shortWakeUpZone'),
 		currentCycle = document.getElementById('currentCycle'),
-		fallBlock = document.getElementById('fallBlock')
+		fallBlock = document.getElementById('fallBlock'),
+		modal = document.querySelector('.modal'),
+		openSettingModalBtn = document.querySelectorAll('.open-setting-modal'),
+		modalContainer = document.querySelector('.modal__container'),
+		modalCloseBtn = document.querySelector('.modal__close')
 		;
 
 	/***************
@@ -25,4 +29,28 @@ document.addEventListener('DOMContentLoaded', () => {
 		currentCycle.innerHTML = text;
 		currentCycle.style.backgroundColor = eventTarget.dataset.color ? eventTarget.dataset.color : window.getComputedStyle(eventTarget).backgroundColor;
 	}
+
+	/*************************
+	 * 2. Open Setting Modal *
+	 *************************/
+
+	openSettingModalBtn.forEach(btn => {
+		btn.addEventListener('click', () => {
+			modal.style.visibility = 'visible';
+			modal.style.opacity = 1;
+
+			modalContainer.style.visibility = 'visible';
+			modalContainer.style.opacity = 1;
+			modalContainer.style.top = '3rem';
+		})
+	})
+
+	modalCloseBtn.addEventListener('click', () => {
+		modal.style.visibility = 'hidden';
+		modal.style.opacity = 0;
+
+		modalContainer.style.visibility = 'hidden';
+		modalContainer.style.opacity = 0;
+		modalContainer.style.top = '6rem';
+	})
 })
