@@ -23,6 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function sleepZones(text, eventTarget) {
 		currentCycle.innerHTML = text;
-		currentCycle.style.backgroundColor = window.getComputedStyle(eventTarget).backgroundColor;;
+		currentCycle.style.backgroundColor = eventTarget.dataset.color ? eventTarget.dataset.color : window.getComputedStyle(eventTarget).backgroundColor;
 	}
 })

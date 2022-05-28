@@ -189,10 +189,9 @@ body {
 			min-width: calc($oneCycle / 6);
 			height: 300px;
 			border-top: 2px dashed white;
-			&:hover {
-				background-color: rgba($color: $secondBgcolor, $alpha: .3);
-				cursor: pointer;
-			}
+			background-color: rgba($color: $secondBgcolor, $alpha: .3);
+			background: linear-gradient(180deg, rgba($color: $secondBgcolor, $alpha: .3) 50%, rgba(166,152,238,0) 100%);
+			cursor: pointer;
 		}
 
 		&__first {
