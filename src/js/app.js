@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			modalContainer.style.visibility = 'visible';
 			modalContainer.style.opacity = 1;
-			modalContainer.style.top = '3rem';
+			modalContainer.style.marginTop = '0px';
 		})
 	})
 
@@ -51,6 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		modalContainer.style.visibility = 'hidden';
 		modalContainer.style.opacity = 0;
-		modalContainer.style.top = '6rem';
+		modalContainer.style.marginTop = '6rem';
 	})
 })

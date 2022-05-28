@@ -608,13 +608,18 @@ body {
 	}
 
 	.modal {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		bottom: 0;
 		left: 0;
 		right: 0;
 		background-color: rgba(0, 0, 0, .5);
 		z-index: 5;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
 		opacity: 0;
 		visibility: hidden;
 		transition: visibility .7s, opacity .7s;
@@ -624,24 +629,18 @@ body {
 		}
 
 		&__container {
-			position: absolute;
-			top: 6rem;
+			margin-top: 6rem;
 			opacity: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
 			max-width: 500px;
-			margin-right: auto;
-			
-			margin-left: auto;
-			background-color: #fff;
-			border-radius: 20px 20px 0 0;
+			flex-basis: 400px;
+
+			border-radius: 20px;
 			background: linear-gradient(rgba(148, 182, 237, 1) 50%, rgba(69, 127, 218, 1) 100%);
 
 			visibility: hidden;
 			opacity: 0;
 
-			transition: visibility .7s, opacity .7s, top .7s;
+			transition: visibility .7s, opacity .7s, margin-top .7s;
 		}
 
 		&__close {
