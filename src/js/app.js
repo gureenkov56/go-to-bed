@@ -16,14 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
 		fallBlock = document.getElementById('fallBlock'),
 		modal = document.querySelector('.modal'),
 		openSettingModalBtn = document.querySelectorAll('.open-setting-modal'),
+
 		modalContainer = document.querySelector('.modal__container'),
 		modalCloseBtn = document.querySelector('.modal__close'),
 		inputStartSleeping = document.getElementById('inputStartSleeping'),
 		btnSpanStartSleeping = document.getElementById('btnSpanStartSleeping'),
 		inputNeedWakeUp = document.getElementById('inputNeedWakeUp'),
+
 		btnSpanNeedWakeUp =  document.getElementById('btnSpanNeedWakeUp'),
 		calcWithStartSleeping = document.getElementById('calcWithStartSleeping'),
-		selectTimeForFallingSleep = document.getElementById('selectTimeForFallingSleep')
+		selectTimeForFallingSleep = document.getElementById('selectTimeForFallingSleep'),
+		closeModalBtns = document.querySelectorAll('.close-modal-btn')
 		;
 
 	/******************
@@ -61,15 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	})
 
-	modalCloseBtn.addEventListener('click', () => {
-		modal.style.visibility = 'hidden';
-		modal.style.opacity = 0;
-
-		modalContainer.style.visibility = 'hidden';
-		modalContainer.style.opacity = 0;
-		modalContainer.style.marginTop = '6rem';
-	})
-
 	/***********
 	 * 3. Time *
 	 ***********/
@@ -97,7 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	// I need in X time for falling sleep
-	if (localStorage.getItem('iNeedInForFallingSleep')) selectTimeForFallingSleep.value = localStorage.getItem('iNeedInForFallingSleep');
+	if (localStorage.getItem('iNeedInForFallingSleep')) {
+		selectTimeForFallingSleep.value = localStorage.getItem('iNeedInForFallingSleep');
+		fallBlock.style.minWidth = selectTimeForFallingSleep.value * 2 + 'px';
+	}
 
 	selectTimeForFallingSleep.addEventListener('change', () => {
 		localStorage.setItem('iNeedInForFallingSleep', selectTimeForFallingSleep.value);
@@ -106,6 +103,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	/*****************
 	 * 4. Calc cycle *
 	 *****************/
+
+	closeModalBtns.forEach(closeModalBtn => {
+		closeModalBtn.addEventListener('click', () => {
+			modal.style.visibility = 'hidden';
+			modal.style.opacity = 0;
+
+			modalContainer.style.visibility = 'hidden';
+			modalContainer.style.opacity = 0;
+			modalContainer.style.marginTop = '6rem';
+
+			fallBlock.style.minWidth = selectTimeForFallingSleep.value * 2 + 'px';
+		})
+	})
 
 	calcWithStartSleeping.addEventListener('click', () => {
 

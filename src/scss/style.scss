@@ -4,7 +4,7 @@ $primaryBgcolor: #94B6ED;
 $secondBgcolor: #8AEBDB;
 $thirdBgcolor: #A698EE;
 $blueBase: rgba(69, 127, 218, .3);
-$oneCycle: 200px;
+$oneCycle: 180px;
 
 body {
 	margin: 0;
@@ -191,6 +191,8 @@ body {
 			border-top: 2px dashed white;
 			background-color: rgba($color: $secondBgcolor, $alpha: .3);
 			background: linear-gradient(180deg, rgba($color: $secondBgcolor, $alpha: .3) 50%, rgba(166, 152, 238, 0) 100%);
+			transition: min-width .4s;
+			transition-delay: 250ms;
 			cursor: pointer;
 		}
 
@@ -683,7 +685,7 @@ body {
 				margin: 0;
 			}
 
-			
+
 
 			/* Firefox */
 			select {
