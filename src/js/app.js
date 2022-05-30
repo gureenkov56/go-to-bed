@@ -1,3 +1,12 @@
+/*********************
+ * 		app.js
+ *
+ * 1. Sleep zone
+ * 2. Open Setting Modal
+ * 3. Time
+ * 4. Calc cycle
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
 
 	const
@@ -8,12 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		modal = document.querySelector('.modal'),
 		openSettingModalBtn = document.querySelectorAll('.open-setting-modal'),
 		modalContainer = document.querySelector('.modal__container'),
-		modalCloseBtn = document.querySelector('.modal__close')
+		modalCloseBtn = document.querySelector('.modal__close'),
+		inputStartSleeping = document.getElementById('inputStartSleeping'),
+		btnSpanStartSleeping = document.getElementById('btnSpanStartSleeping'),
+		inputNeedWakeUp = document.getElementById('inputNeedWakeUp'),
+		btnSpanNeedWakeUp =  document.getElementById('btnSpanNeedWakeUp'),
+		calcWithStartSleeping = document.getElementById('calcWithStartSleeping'),
+		selectTimeForFallingSleep = document.getElementById('selectTimeForFallingSleep')
 		;
 
-	/***************
-	 * Sleep zones *
-	 ***************/
+	/******************
+	 * 1. Sleep zones *
+	 ******************/
 	shortWakeUpZone.addEventListener('click', (event) => sleepZones('Незаметные короткие пробуждения', event.target));
 	shortWakeUpZone.addEventListener('mouseover', (event) => sleepZones('Незаметные короткие пробуждения', event.target));
 
@@ -27,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function sleepZones(text, eventTarget) {
 		currentCycle.innerHTML = text;
-		currentCycle.style.backgroundColor = eventTarget.dataset.color ? eventTarget.dataset.color : window.getComputedStyle(eventTarget).backgroundColor;
+		let newColor = eventTarget.dataset.color ? eventTarget.dataset.color : window.getComputedStyle(eventTarget).backgroundColor;
+		currentCycle.style.backgroundColor = newColor;
 	}
 
 	/*************************
@@ -53,4 +69,52 @@ document.addEventListener('DOMContentLoaded', () => {
 		modalContainer.style.opacity = 0;
 		modalContainer.style.marginTop = '6rem';
 	})
+
+	/***********
+	 * 3. Time *
+	 ***********/
+
+	// start sleeping time
+	if (localStorage.getItem('timeStartSleeping')) {
+		inputStartSleeping.value = localStorage.getItem('timeStartSleeping');
+		btnSpanStartSleeping.innerHTML = inputStartSleeping.value;
+	}
+
+	inputStartSleeping.addEventListener('change', () => {
+		localStorage.setItem('timeStartSleeping', inputStartSleeping.value);
+		btnSpanStartSleeping.innerHTML = inputStartSleeping.value;
+	})
+
+	// need wake up time
+	if (localStorage.getItem('timeNeedWakeUp')) {
+		inputNeedWakeUp.value = localStorage.getItem('timeNeedWakeUp');
+		btnSpanNeedWakeUp.innerHTML = inputNeedWakeUp.value;
+	}
+
+	inputNeedWakeUp.addEventListener('change', () => {
+		localStorage.setItem('timeNeedWakeUp', inputNeedWakeUp.value);
+		btnSpanNeedWakeUp.innerHTML = inputNeedWakeUp.value;
+	})
+
+	// I need in X time for falling sleep
+	if (localStorage.getItem('iNeedInForFallingSleep')) selectTimeForFallingSleep.value = localStorage.getItem('iNeedInForFallingSleep');
+
+	selectTimeForFallingSleep.addEventListener('change', () => {
+		localStorage.setItem('iNeedInForFallingSleep', selectTimeForFallingSleep.value);
+	})
+
+	/*****************
+	 * 4. Calc cycle *
+	 *****************/
+
+	calcWithStartSleeping.addEventListener('click', () => {
+
+	})
+
+	calcWithNeedWakeUp.addEventListener('click', () => {
+
+	})
+
+
+
 })

@@ -38,7 +38,7 @@
 				<div class="cycle-graphic__wrapper__deep-zone" id="deepZone"></div>
 				<div class="cycle-graphic__wrapper__short-wake-ups" id="shortWakeUpZone"></div>
 
-				<div class="cycle-graphic__fall-block" id="fallBlock"></div>
+				<div class="cycle-graphic__fall-block" id="fallBlock" data-color="rgba(138, 235, 219, .4)"></div>
 
 				<div class="cycle-graphic__first">
 					<div class="one-step">
@@ -201,15 +201,15 @@
 			<div class="modal__close">×</div>
 			<div class="modal__settings">
 				<h3>Ложусь спать в...</h3>
-				<input type="time" value="23:00">
-				<button class="big">Рассчитать от 23:00</button>
+				<input type="time" value="23:00" id="inputStartSleeping">
+				<button class="big" id="calcWithStartSleeping">Рассчитать от <span id="btnSpanStartSleeping">23:00</span></button>
 				<p>или</p>
 				<h3>Нужно проснуться в...</h3>
-				<input type="time" value="07:00">
-				<button class="big">Рассчитать к 07:00</button>
+				<input type="time" value="07:00" id="inputNeedWakeUp">
+				<button class="big" id="calcWithNeedWakeUp">Рассчитать к <span id="btnSpanNeedWakeUp">07:00</span></button>
 
 				<p class="time-for-falling">Чтобы уснуть мне нужно
-					<select>
+					<select id="selectTimeForFallingSleep">
 						<option value="0">0</option>
 						<option value="15" selected="selected">15</option>
 						<option value="30">30</option>
