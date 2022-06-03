@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		openSettingModalBtn = document.querySelectorAll('.open-setting-modal'),
 
 		modalContainer = document.querySelector('.modal__container'),
-		modalCloseBtn = document.querySelector('.modal__close'),
 		inputStartSleeping = document.getElementById('inputStartSleeping'),
 		btnSpanStartSleeping = document.getElementById('btnSpanStartSleeping'),
 		inputNeedWakeUp = document.getElementById('inputNeedWakeUp'),
@@ -61,6 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			modalContainer.style.visibility = 'visible';
 			modalContainer.style.opacity = 1;
 			modalContainer.style.marginTop = '0px';
+
+			document.body.style.overflow = 'hidden';
 		})
 	})
 
@@ -113,18 +114,17 @@ document.addEventListener('DOMContentLoaded', () => {
 			modalContainer.style.opacity = 0;
 			modalContainer.style.marginTop = '6rem';
 
+			document.body.style.overflow = 'scroll';
+
 			fallBlock.style.minWidth = selectTimeForFallingSleep.value * 2 + 'px';
 		})
 	})
 
 	calcWithStartSleeping.addEventListener('click', () => {
-
+		let inputStartSleepingValue = inputStartSleeping.value;
 	})
 
 	calcWithNeedWakeUp.addEventListener('click', () => {
 
 	})
-
-
-
 })
