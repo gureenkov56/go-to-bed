@@ -44,6 +44,11 @@ function images() {
 	.pipe(dest('dist/'))
 }
 
+function favicon() {
+	return src('src/*.ico')
+	.pipe(dest('dist/'))
+}
+
 
 
 exports.styles = styles;
@@ -54,7 +59,7 @@ exports.js = js;
 
 
 
-exports.start = series(cleanDistFolder, htmlAndPhp, styles, js, images, startwatch);
+exports.start = series(cleanDistFolder, htmlAndPhp, styles, js, images, favicon, startwatch);
 
 
 
