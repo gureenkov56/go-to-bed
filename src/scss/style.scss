@@ -6,6 +6,10 @@ $thirdBgcolor: #A698EE;
 $blueBase: rgba(69, 127, 218, .3);
 $oneCycle: 180px;
 
+.opacity0 {
+	opacity: 0 !important;
+}
+
 body {
 	margin: 0;
 	color: white;
@@ -547,6 +551,13 @@ body {
 		&__number {
 			text-align: center;
 			font-size: 5rem;
+
+			#perfectHours,
+			#blinkedColon,
+			#perfectMinutes {
+				opacity: 1;
+				transition: .6s;
+			}
 		}
 
 		&__button {
@@ -563,10 +574,6 @@ body {
 			max-width: 600px;
 			margin: 1rem auto;
 			margin-bottom: 3rem;
-		}
-
-		&__item {
-			padding: 4px 10px;
 		}
 	}
 
@@ -665,7 +672,7 @@ body {
 			select {
 				font-family: 'Montserrat', sans-serif;
 				border-radius: 5px;
-				background-color: rgba(0, 0, 0, .5);
+				background-color: rgba(0, 0, 0, .2);
 				border: none;
 				color: white;
 			}

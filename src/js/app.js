@@ -22,10 +22,19 @@ document.addEventListener('DOMContentLoaded', () => {
 		btnSpanStartSleeping = document.getElementById('btnSpanStartSleeping'),
 		inputNeedWakeUp = document.getElementById('inputNeedWakeUp'),
 
-		btnSpanNeedWakeUp =  document.getElementById('btnSpanNeedWakeUp'),
+		btnSpanNeedWakeUp = document.getElementById('btnSpanNeedWakeUp'),
 		calcWithStartSleeping = document.getElementById('calcWithStartSleeping'),
 		selectTimeForFallingSleep = document.getElementById('selectTimeForFallingSleep'),
-		closeModalBtns = document.querySelectorAll('.close-modal-btn')
+		closeModalBtns = document.querySelectorAll('.close-modal-btn'),
+
+		perfectHours = document.getElementById('perfectHours'),
+		perfectMinutes = document.getElementById('perfectMinutes'),
+		blinkedColon = document.getElementById('blinkedColon')
+		;
+
+	let
+		timeForFallingDown = localStorage.getItem('timeForFallingDown') ? localStorage.getItem('timeForFallingDown') : 15,
+		timeWasSetted = false
 		;
 
 	/******************
@@ -92,13 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	// I need in X time for falling sleep
-	if (localStorage.getItem('iNeedInForFallingSleep')) {
-		selectTimeForFallingSleep.value = localStorage.getItem('iNeedInForFallingSleep');
-		fallBlock.style.minWidth = selectTimeForFallingSleep.value * 2 + 'px';
+	if (localStorage.getItem('timeForFallingDown')) {
+		selectTimeForFallingSleep.value = localStorage.getItem('timeForFallingDown');
+		timeForFallingDown = selectTimeForFallingSleep.value;
+		calcCycleByNow();
 	}
 
 	selectTimeForFallingSleep.addEventListener('change', () => {
-		localStorage.setItem('iNeedInForFallingSleep', selectTimeForFallingSleep.value);
+		localStorage.setItem('timeForFallingDown', selectTimeForFallingSleep.value);
+		timeForFallingDown = selectTimeForFallingSleep.value;
+		calcCycleByNow();
 	})
 
 	/*****************
@@ -116,9 +128,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			document.body.style.overflow = 'scroll';
 
-			fallBlock.style.minWidth = selectTimeForFallingSleep.value * 2 + 'px';
+			calcCycleByNow();
+			drowCycleGraphic(selectTimeForFallingSleep.value);
 		})
 	})
+
+	function calcCycleByNow() {
+		let currentTime = new Date;
+		let perfectHoursFormat = null;
+		let perfectMinutesFormat = null;
+
+		for (let i = 1; i < 7; i++) {
+			currentTime.setMinutes(currentTime.getMinutes() + 90);
+
+			if (i === 5) {
+				perfectHoursFormat = formatTime(currentTime.getHours());
+				perfectMinutesFormat = formatTime(currentTime.getMinutes());
+			} else {
+
+				document.getElementById(`timeOfCycleEnding${i}`).innerHTML = formatTime(currentTime.getHours()) + ':' + formatTime(currentTime.getMinutes());
+			}
+		}
+
+
+
+		if (!timeWasSetted) {
+			perfectHours.innerHTML = perfectHoursFormat;
+			perfectMinutes.innerHTML = perfectMinutesFormat;
+			timeWasSetted = true;
+		}
+
+		if (perfectHours.innerHTML != perfectHoursFormat) {
+			perfectHours.classList.add('opacity0');
+			setTimeout(() => {
+				perfectHours.innerHTML = perfectHoursFormat;
+				perfectHours.classList.remove('opacity0');
+			}, 1000);
+		}
+
+		if (perfectMinutes.innerHTML != perfectMinutesFormat) {
+			perfectMinutes.classList.add('opacity0');
+			setTimeout(() => {
+				perfectMinutes.innerHTML = perfectMinutesFormat;
+				perfectMinutes.classList.remove('opacity0');
+			}, 1000);
+		}
+
+
+	}
+
+	calcCycleByNow();
+
+	setInterval(() => {
+		blinkedColon.classList.toggle('opacity0');
+		calcCycleByNow();
+	}, 1000);
+
+	function formatTime(number) {
+		if (Number(number) < 10) {
+			return '0' + number;
+		} else {
+			return number;
+		}
+	}
+
+
+
+
+	function drowCycleGraphic() {
+		fallBlock.style.minWidth = timeForFallingDown * 2 + 'px';
+	}
 
 	calcWithStartSleeping.addEventListener('click', () => {
 		let inputStartSleepingValue = inputStartSleeping.value;
