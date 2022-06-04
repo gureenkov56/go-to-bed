@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		timeWasSetted = false
 		;
 
+	timeForFallingDown = Number(timeForFallingDown);
+
 	/******************
 	 * 1. Sleep zones *
 	 ******************/
@@ -138,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		let perfectHoursFormat = null;
 		let perfectMinutesFormat = null;
 
+		currentTime.setMinutes(currentTime.getMinutes() + Number(timeForFallingDown));
+
 		for (let i = 1; i < 7; i++) {
 			currentTime.setMinutes(currentTime.getMinutes() + 90);
 
@@ -149,8 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				document.getElementById(`timeOfCycleEnding${i}`).innerHTML = formatTime(currentTime.getHours()) + ':' + formatTime(currentTime.getMinutes());
 			}
 		}
-
-
 
 		if (!timeWasSetted) {
 			perfectHours.innerHTML = perfectHoursFormat;
@@ -192,11 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-
-
-
 	function drowCycleGraphic() {
 		fallBlock.style.minWidth = timeForFallingDown * 2 + 'px';
+		shortWakeUpZone.style.left = timeForFallingDown * 2 + 130 + 'px';
+		deepZone.style.left = timeForFallingDown * 2 + 'px';
 	}
 
 	calcWithStartSleeping.addEventListener('click', () => {
@@ -206,4 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	calcWithNeedWakeUp.addEventListener('click', () => {
 
 	})
+
+	drowCycleGraphic();
+	calcCycleByNow();
 })

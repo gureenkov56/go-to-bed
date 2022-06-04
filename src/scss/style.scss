@@ -146,6 +146,8 @@ body {
 				top: calc(310px - 2rem);
 				left: 2rem;
 				cursor: pointer;
+				transition: left .4s;
+				transition-delay: 500ms;
 			}
 
 			&__short-wake-ups {
@@ -155,6 +157,8 @@ body {
 				position: absolute;
 				left: $oneCycle;
 				cursor: pointer;
+				transition: left .4s;
+				transition-delay: 400ms;
 			}
 
 			.dot {
