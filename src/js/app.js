@@ -31,12 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		perfectMinutes = document.getElementById('perfectMinutes'),
 		blinkedColon = document.getElementById('blinkedColon'),
 		perfectTimeIfSpan = document.getElementById('perfectTimeIfSpan'),
-		perfectTimeIf = document.getElementById('perfectTimeIf')
+		perfectTimeIf = document.getElementById('perfectTimeIf'),
+		iGoToBedNow = document.getElementById('iGoToBedNow')
 		;
 
 	let
 		timeForFallingDown = localStorage.getItem('timeForFallingDown') ? localStorage.getItem('timeForFallingDown') : 15,
-		timeStartSleeping = localStorage.getItem('timeStartSleeping') ? localStorage.getItem('timeStartSleeping') : null,
+		timeStartSleeping = null,
 		timeWasSetted = false
 		;
 
@@ -68,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	openSettingModalBtn.forEach(btn => {
 		btn.addEventListener('click', () => {
-			console.log('clcik');
 			modal.style.visibility = 'visible';
 			modal.style.opacity = 1;
 
@@ -138,12 +138,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		})
 	})
 
-	function calcCycleByNow() {
+	function calcCycleByNow(goToBedTime = null) {
 		let currentTime = new Date;
+
+		if ( goToBedTime ) {
+			let
+				goToBedHour = Number(goToBedTime.split(':')[0]),
+				goToBedMinutes = Number(goToBedTime.split(':')[1])
+				;
+
+			currentTime.setHours(goToBedHour);
+			currentTime.setMinutes(goToBedMinutes);
+		}
+
 		let perfectHoursFormat = null;
 		let perfectMinutesFormat = null;
 
 		currentTime.setMinutes(currentTime.getMinutes() + Number(timeForFallingDown));
+
 
 		for (let i = 1; i < 7; i++) {
 			currentTime.setMinutes(currentTime.getMinutes() + 90);
@@ -186,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	setInterval(() => {
 		blinkedColon.classList.toggle('opacity0');
-		calcCycleByNow();
+		//calcCycleByNow();
 	}, 1000);
 
 	function formatTime(number) {
@@ -208,6 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.setItem('timeStartSleeping', timeStartSleeping);
 		perfectTimeIf.classList.remove('d-none');
 		perfectTimeIfSpan.innerHTML = timeStartSleeping;
+		calcCycleByNow(timeStartSleeping);
+	})
+
+	iGoToBedNow.addEventListener('click', () => {
+		perfectTimeIf.classList.add('d-none');
+		timeStartSleeping = null;
+		calcCycleByNow(timeStartSleeping);
 	})
 
 	calcWithNeedWakeUp.addEventListener('click', () => {
