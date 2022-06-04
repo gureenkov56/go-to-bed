@@ -109,13 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (localStorage.getItem('timeForFallingDown')) {
 		selectTimeForFallingSleep.value = localStorage.getItem('timeForFallingDown');
 		timeForFallingDown = selectTimeForFallingSleep.value;
-		calcCycleByNow();
+		calcCycleByNow(timeStartSleeping);
 	}
 
 	selectTimeForFallingSleep.addEventListener('change', () => {
 		localStorage.setItem('timeForFallingDown', selectTimeForFallingSleep.value);
 		timeForFallingDown = selectTimeForFallingSleep.value;
-		calcCycleByNow();
+		calcCycleByNow(timeStartSleeping);
 	})
 
 	/*****************
@@ -133,15 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			document.body.style.overflow = 'scroll';
 
-			calcCycleByNow();
+			calcCycleByNow(timeStartSleeping);
 			drowCycleGraphic(selectTimeForFallingSleep.value);
 		})
 	})
 
 	function calcCycleByNow(goToBedTime = null) {
+		console.log('goToBedTime', goToBedTime); 
 		let currentTime = new Date;
 
-		if ( goToBedTime ) {
+		if ( goToBedTime != null ) {
 			let
 				goToBedHour = Number(goToBedTime.split(':')[0]),
 				goToBedMinutes = Number(goToBedTime.split(':')[1])
@@ -194,11 +195,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	}
 
-	calcCycleByNow();
+	calcCycleByNow(timeStartSleeping);
 
 	setInterval(() => {
 		blinkedColon.classList.toggle('opacity0');
-		//calcCycleByNow();
+		//calcCycleByNow(timeStartSleeping);
 	}, 1000);
 
 	function formatTime(number) {
@@ -234,5 +235,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	drowCycleGraphic();
-	calcCycleByNow();
+	calcCycleByNow(timeStartSleeping);
 })
