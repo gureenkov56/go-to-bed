@@ -6,9 +6,7 @@ $thirdBgcolor: #A698EE;
 $blueBase: rgba(69, 127, 218, .3);
 $oneCycle: 180px;
 
-.opacity0 {
-	opacity: 0 !important;
-}
+
 
 body {
 	margin: 0;
@@ -19,6 +17,10 @@ body {
 
 	.d-none {
 		display: none;
+	}
+
+	.opacity0 {
+		opacity: 0 !important;
 	}
 
 	.bg {
@@ -550,6 +552,10 @@ body {
 	.perfect-time {
 		&__h2 {
 			margin-top: 5rem;
+		}
+
+		&__if {
+			text-align: center; 
 		}
 
 		&__number {

@@ -29,11 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		perfectHours = document.getElementById('perfectHours'),
 		perfectMinutes = document.getElementById('perfectMinutes'),
-		blinkedColon = document.getElementById('blinkedColon')
+		blinkedColon = document.getElementById('blinkedColon'),
+		perfectTimeIfSpan = document.getElementById('perfectTimeIfSpan'),
+		perfectTimeIf = document.getElementById('perfectTimeIf')
 		;
 
 	let
 		timeForFallingDown = localStorage.getItem('timeForFallingDown') ? localStorage.getItem('timeForFallingDown') : 15,
+		timeStartSleeping = localStorage.getItem('timeStartSleeping') ? localStorage.getItem('timeStartSleeping') : null,
 		timeWasSetted = false
 		;
 
@@ -65,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	openSettingModalBtn.forEach(btn => {
 		btn.addEventListener('click', () => {
+			console.log('clcik');
 			modal.style.visibility = 'visible';
 			modal.style.opacity = 1;
 
@@ -87,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	inputStartSleeping.addEventListener('change', () => {
-		localStorage.setItem('timeStartSleeping', inputStartSleeping.value);
 		btnSpanStartSleeping.innerHTML = inputStartSleeping.value;
 	})
 
@@ -201,7 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	calcWithStartSleeping.addEventListener('click', () => {
-		let inputStartSleepingValue = inputStartSleeping.value;
+		timeStartSleeping = inputStartSleeping.value;
+		localStorage.setItem('timeStartSleeping', timeStartSleeping);
+		perfectTimeIf.classList.remove('d-none');
+		perfectTimeIfSpan.innerHTML = timeStartSleeping;
 	})
 
 	calcWithNeedWakeUp.addEventListener('click', () => {

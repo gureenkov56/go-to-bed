@@ -39,6 +39,11 @@ function js() {
 	.pipe(dest('dist/js/'))
 }
 
+function images() {
+	return src('src/images/**/*.*', {base: 'src/'})
+	.pipe(dest('dist/'))
+}
+
 
 
 exports.styles = styles;
@@ -49,7 +54,7 @@ exports.js = js;
 
 
 
-exports.start = series(cleanDistFolder, htmlAndPhp, styles, js, startwatch);
+exports.start = series(cleanDistFolder, htmlAndPhp, styles, js, images, startwatch);
 
 
 

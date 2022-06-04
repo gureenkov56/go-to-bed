@@ -17,11 +17,19 @@
 
 	<div class="content-container">
 		<header>
-			<div class="header__settings">S</div>
-			<div class="header__download">RU</div>
+			<div class="header__settings open-setting-modal d-none">
+				<object data="./images/svg/settings-svgrepo-com.svg" type="image/svg+xml" width="23px"
+					height="23px"></object>
+			</div>
+
+			<div class="header__download d-none">
+				<object data="./images/svg/cloud-download-svgrepo-com.svg" type="image/svg+xml" width="30px"
+					height="30px"></object>
+			</div>
 		</header>
 
 		<h2 class="perfect-time__h2">Идеальное время пробуждения</h2>
+		<p class="perfect-time__if d-none" id="perfectTimeIf">если лечь спать в <span id="perfectTimeIfSpan"></span></p>
 		<div class="perfect-time__number" id="perfectTime">
 			<span id="perfectHours"></span>
 			<span id="blinkedColon">:</span>
@@ -207,11 +215,15 @@
 			<div class="modal__settings">
 				<h3>Ложусь спать в...</h3>
 				<input type="time" value="23:00" id="inputStartSleeping">
-				<button class="big close-modal-btn" id="calcWithStartSleeping">Рассчитать от <span id="btnSpanStartSleeping">23:00</span></button>
-				<p>или</p>
-				<h3>Нужно проснуться в...</h3>
-				<input type="time" value="07:00" id="inputNeedWakeUp">
-				<button class="big close-modal-btn" id="calcWithNeedWakeUp">Рассчитать к <span id="btnSpanNeedWakeUp">07:00</span></button>
+				<button class="big close-modal-btn" id="calcWithStartSleeping">Рассчитать от <span
+						id="btnSpanStartSleeping">23:00</span></button>
+				<div class="d-none">
+					<p>или</p>
+					<h3>Нужно проснуться в...</h3>
+					<input type="time" value="07:00" id="inputNeedWakeUp">
+					<button class="big close-modal-btn" id="calcWithNeedWakeUp">Рассчитать к <span
+							id="btnSpanNeedWakeUp">07:00</span></button>
+				</div>
 
 				<p class="time-for-falling">Чтобы уснуть мне нужно
 					<select id="selectTimeForFallingSleep">
