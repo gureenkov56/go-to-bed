@@ -29,10 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		perfectHours = document.getElementById('perfectHours'),
 		perfectMinutes = document.getElementById('perfectMinutes'),
-		blinkedColon = document.getElementById('blinkedColon'),
 		perfectTimeIfSpan = document.getElementById('perfectTimeIfSpan'),
 		perfectTimeIf = document.getElementById('perfectTimeIf'),
-		iGoToBedNow = document.getElementById('iGoToBedNow')
+		iGoToBedNow = document.getElementById('iGoToBedNow'),
+
+		startSleepOnGraphic = document.getElementById('startSleepOnGraphic'),
+		activeDotAll = document.querySelectorAll('.active-dot'),
+		cycleGraphicFirst = document.querySelector('.cycle-graphic__first'),
+		widthOfOneCycle = parseInt(window.getComputedStyle(cycleGraphicFirst).width),
+		startSleepOnGraphicDefaultMinWidth = parseInt(window.getComputedStyle(startSleepOnGraphic).minWidth)
 		;
 
 	let
@@ -109,13 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (localStorage.getItem('timeForFallingDown')) {
 		selectTimeForFallingSleep.value = localStorage.getItem('timeForFallingDown');
 		timeForFallingDown = selectTimeForFallingSleep.value;
-		calcCycleByNow(timeStartSleeping);
+		calcCycle(timeStartSleeping);
 	}
 
 	selectTimeForFallingSleep.addEventListener('change', () => {
 		localStorage.setItem('timeForFallingDown', selectTimeForFallingSleep.value);
 		timeForFallingDown = selectTimeForFallingSleep.value;
-		calcCycleByNow(timeStartSleeping);
 	})
 
 	/*****************
@@ -133,16 +137,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			document.body.style.overflow = 'scroll';
 
-			calcCycleByNow(timeStartSleeping);
-			drowCycleGraphic(selectTimeForFallingSleep.value);
+			calcCycle(timeStartSleeping);
 		})
 	})
 
-	function calcCycleByNow(goToBedTime = null) {
-		console.log('goToBedTime', goToBedTime); 
+	function calcCycle(goToBedTime = null) {
 		let currentTime = new Date;
 
-		if ( goToBedTime != null ) {
+		if (goToBedTime != null) {
 			let
 				goToBedHour = Number(goToBedTime.split(':')[0]),
 				goToBedMinutes = Number(goToBedTime.split(':')[1])
@@ -155,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		let perfectHoursFormat = null;
 		let perfectMinutesFormat = null;
 
+		drowCycleGraphic(currentTime);
 		currentTime.setMinutes(currentTime.getMinutes() + Number(timeForFallingDown));
 
 
@@ -164,10 +167,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			if (i === 5) {
 				perfectHoursFormat = formatTime(currentTime.getHours());
 				perfectMinutesFormat = formatTime(currentTime.getMinutes());
-			} else {
-
-				document.getElementById(`timeOfCycleEnding${i}`).innerHTML = formatTime(currentTime.getHours()) + ':' + formatTime(currentTime.getMinutes());
 			}
+
+			let timeOfCycleEndingIArr = document.querySelectorAll(`.timeOfCycleEnding${i}`);
+			timeOfCycleEndingIArr.forEach(el => {
+				el.innerHTML = formatTime(currentTime.getHours()) + ':' + formatTime(currentTime.getMinutes());
+			})
+
 		}
 
 		if (!timeWasSetted) {
@@ -195,12 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	}
 
-	calcCycleByNow(timeStartSleeping);
-
-	setInterval(() => {
-		blinkedColon.classList.toggle('opacity0');
-		//calcCycleByNow(timeStartSleeping);
-	}, 1000);
+	calcCycle(timeStartSleeping);
 
 	function formatTime(number) {
 		if (Number(number) < 10) {
@@ -210,10 +211,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
-	function drowCycleGraphic() {
+	function drowCycleGraphic(startSleepDate) {
 		fallBlock.style.minWidth = timeForFallingDown * 2 + 'px';
 		shortWakeUpZone.style.left = timeForFallingDown * 2 + 130 + 'px';
 		deepZone.style.left = timeForFallingDown * 2 + 'px';
+		activeDotAll.forEach(dot => {
+			dot.style.left = ( widthOfOneCycle * (dot.classList[1][4] - 1) + (timeForFallingDown * 2) ) + "px";
+		})
+		startSleepOnGraphic.innerHTML = formatTime(startSleepDate.getHours()) + ":" + formatTime(startSleepDate.getMinutes());
+		startSleepOnGraphic.style.minWidth = (startSleepOnGraphicDefaultMinWidth + timeForFallingDown * 2) + 'px';
 	}
 
 	calcWithStartSleeping.addEventListener('click', () => {
@@ -221,19 +227,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.setItem('timeStartSleeping', timeStartSleeping);
 		perfectTimeIf.classList.remove('d-none');
 		perfectTimeIfSpan.innerHTML = timeStartSleeping;
-		calcCycleByNow(timeStartSleeping);
+		calcCycle(timeStartSleeping);
 	})
 
 	iGoToBedNow.addEventListener('click', () => {
 		perfectTimeIf.classList.add('d-none');
 		timeStartSleeping = null;
-		calcCycleByNow(timeStartSleeping);
+		calcCycle(timeStartSleeping);
 	})
 
 	calcWithNeedWakeUp.addEventListener('click', () => {
 
 	})
 
-	drowCycleGraphic();
-	calcCycleByNow(timeStartSleeping);
+	calcCycle(timeStartSleeping);
 })

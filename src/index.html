@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./styles/style.css">
+	<link rel="icon" href="favicon.ico">
 	<title>Расчитать циклы сна</title>
 </head>
 
@@ -39,11 +40,11 @@
 
 		<h4>Также легко проснуться в...</h4>
 		<div class="easy-wake-up__wrapper">
-			<span id="timeOfCycleEnding1">1:30</span>
-			<span id="timeOfCycleEnding2">1:30</span>
-			<span id="timeOfCycleEnding3">1:30</span>
-			<span id="timeOfCycleEnding4">1:30</span>
-			<span id="timeOfCycleEnding6">1:30</span>
+			<span class="timeOfCycleEnding1">1:30</span>
+			<span class="timeOfCycleEnding2">1:30</span>
+			<span class="timeOfCycleEnding3">1:30</span>
+			<span class="timeOfCycleEnding4">1:30</span>
+			<span class="timeOfCycleEnding6">1:30</span>
 		</div>
 
 		<h1>Цикл сна</h1>
@@ -54,11 +55,11 @@
 		<div class="cycle-graphic__container">
 			<div class="cycle-graphic__wrapper">
 				<div class="dot dot-1"></div>
-				<div class="dot dot-2"></div>
-				<div class="dot dot-3"></div>
-				<div class="dot dot-4"></div>
-				<div class="dot dot-5"></div>
-				<div class="dot dot-6"></div>
+				<div class="dot dot-2 active-dot"></div>
+				<div class="dot dot-3 active-dot"></div>
+				<div class="dot dot-4 active-dot"></div>
+				<div class="dot dot-5 active-dot"></div>
+				<div class="dot dot-6 active-dot"></div>
 
 				<div class="cycle-graphic__wrapper__deep-zone" id="deepZone"></div>
 				<div class="cycle-graphic__wrapper__short-wake-ups" id="shortWakeUpZone"></div>
@@ -182,12 +183,12 @@
 			</div>
 
 			<div class="time-list">
-				<div class="time">23:00</div>
-				<div class="time">2:00</div>
-				<div class="time">3:30</div>
-				<div class="time">2:00</div>
-				<div class="time">3:30</div>
-				<div class="time">2:00</div>
+				<div class="time" id="startSleepOnGraphic">23:00</div>
+				<div class="time timeOfCycleEnding1">2:00</div>
+				<div class="time timeOfCycleEnding2">3:30</div>
+				<div class="time timeOfCycleEnding3">2:00</div>
+				<div class="time timeOfCycleEnding4">3:30</div>
+				<div class="time timeOfCycleEnding5">2:00</div>
 			</div>
 		</div>
 

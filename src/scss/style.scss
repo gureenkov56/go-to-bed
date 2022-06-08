@@ -119,9 +119,10 @@ body {
 				.time {
 					min-width: $oneCycle;
 					text-align: center;
+					transition: min-width .4s;
 
 					&:first-child {
-						min-width: calc($oneCycle / 2 + 40px);
+						min-width: calc($oneCycle / 2);
 						text-align: left;
 						font-size: 1rem;
 					}
@@ -138,7 +139,7 @@ body {
 			border-bottom: 2px solid white;
 			padding-bottom: 1rem;
 			position: relative;
-			min-width: calc($oneCycle * 6 + $oneCycle / 6);
+			min-width: calc($oneCycle * 6);
 
 			&__deep-zone {
 				background-color: $blueBase;
@@ -146,7 +147,7 @@ body {
 				width: calc($oneCycle * 3);
 				position: absolute;
 				top: calc(310px - 2rem);
-				left: 2rem;
+				left: 0;
 				cursor: pointer;
 				transition: left .4s;
 				transition-delay: 500ms;
@@ -157,7 +158,7 @@ body {
 				height: 2rem;
 				width: calc($oneCycle * 1.5);
 				position: absolute;
-				left: $oneCycle;
+				left: $oneCycle - 40;
 				cursor: pointer;
 				transition: left .4s;
 				transition-delay: 400ms;
@@ -170,25 +171,26 @@ body {
 				position: absolute;
 				border-radius: 50%;
 				bottom: -4px;
+				transition: left .4s;
 
 				&-2 {
-					left: calc($oneCycle + $oneCycle / 6);
+					left: calc($oneCycle);
 				}
 
 				&-3 {
-					left: calc($oneCycle * 2 + $oneCycle / 6);
+					left: calc($oneCycle * 2);
 				}
 
 				&-4 {
-					left: calc($oneCycle * 3 + $oneCycle / 6);
+					left: calc($oneCycle * 3);
 				}
 
 				&-5 {
-					left: calc($oneCycle * 4 + $oneCycle / 6);
+					left: calc($oneCycle * 4);
 				}
 
 				&-6 {
-					left: calc($oneCycle * 5 + $oneCycle / 6);
+					left: calc($oneCycle * 5);
 				}
 
 
@@ -196,7 +198,6 @@ body {
 		}
 
 		&__fall-block {
-			min-width: calc($oneCycle / 6);
 			height: 300px;
 			border-top: 2px dashed white;
 			background-color: rgba($color: $secondBgcolor, $alpha: .3);
@@ -563,10 +564,13 @@ body {
 			font-size: 5rem;
 
 			#perfectHours,
-			#blinkedColon,
 			#perfectMinutes {
 				opacity: 1;
 				transition: .6s;
+			}
+
+			#blinkedColon {
+				animation: 1.5s infinite alternate blinkColonAnimate;
 			}
 		}
 
@@ -747,5 +751,15 @@ body {
 
 	to {
 		left: -30%;
+	}
+}
+
+@keyframes blinkColonAnimate {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
 	}
 }
