@@ -3,7 +3,8 @@
 $primaryBgcolor: #94B6ED;
 $secondBgcolor: #8AEBDB;
 $thirdBgcolor: #A698EE;
-$blueBase: rgba(69, 127, 218, .3);
+$thanksBgColor: #73A2ED;
+$blueBase: rgba(68, 125, 218, 0.3);
 $oneCycle: 180px;
 
 
@@ -595,6 +596,76 @@ body {
 		&__h2 {
 			margin-top: 5rem;
 		}
+
+		&__wrapper {
+			display: flex;
+			justify-content: space-between;
+			overflow-x: scroll;
+			overflow-y: hidden;
+			max-width: 700px;
+			margin: 0 auto;
+			margin-bottom: 3rem;
+			position: relative;
+
+			&::-webkit-scrollbar {
+				width: 0;
+			}
+
+			.post {
+				width: 200px;
+				margin: 10px;
+
+				&__image {
+					width: 200px;
+					height: 200px;
+					border-radius: 10px;
+					box-shadow: 0 0 10px 0 $blueBase;
+
+					background: rgb(166, 152, 238);
+					background: linear-gradient(180deg, $primaryBgcolor 0%, $thanksBgColor 100%);
+					position: relative;
+
+					cursor: pointer;
+
+
+					h3 {
+						margin: 0;
+						padding: 140px 10px 0 10px;
+						text-align: left;
+						position: absolute;
+					}
+				}
+
+				&__bgc-element {
+					position: absolute;
+					font-size: 12rem;
+					line-height: 12rem;
+					font-weight: 600;
+					color: $thanksBgColor;
+					left: 0;
+					right: 0;
+					text-align: center;
+				}
+
+			}
+		}
+	}
+
+	.say-thanks {
+		position: relative;
+		padding: 2rem;
+
+		&__bg {
+			background-color: $thanksBgColor;
+			filter: blur(50px);
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: -1;
+		}
+
 	}
 
 	.footer {
@@ -726,6 +797,54 @@ body {
 		}
 
 
+	}
+
+	.post-modal {
+		position: fixed;
+		top: 100%;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		z-index: 10;
+		background: rgb(64, 112, 153);
+		background: linear-gradient(349deg, rgba(64, 112, 153, 1) 39%, rgba(70, 161, 240, 1) 100%);
+		border-radius: 20px 20px 0 0;
+
+		transition: top 1s;
+
+		&__header {
+			text-align: right;
+			font-size: 3rem;
+			border-radius: 20px 20px 0 0;
+			padding: 0 10px;
+			box-shadow: 0 5px 5px 0 rgba(64, 112, 153, 1);
+			cursor: pointer;
+			position: relative;
+		}
+
+		&__content-scroll-wrapper {
+			overflow-y: scroll;
+			height: 100%;
+
+			&::-webkit-scrollbar {
+				width: 0;
+			}
+		}
+
+		&__content {
+			padding: 0 10px;
+			padding-bottom: 100px;
+			max-width: 600px;
+			margin: 0 auto;
+
+			>div {
+				height: 0;
+				opacity: 0;
+				visibility: hidden;
+				transition: opacity 1s;
+				transition-delay: 1s;
+			}
+		}
 	}
 
 }

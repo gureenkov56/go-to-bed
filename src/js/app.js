@@ -5,6 +5,7 @@
  * 2. Open Setting Modal
  * 3. Time
  * 4. Calc cycle
+ * 5. Content modal
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -37,7 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		activeDotAll = document.querySelectorAll('.active-dot'),
 		cycleGraphicFirst = document.querySelector('.cycle-graphic__first'),
 		widthOfOneCycle = parseInt(window.getComputedStyle(cycleGraphicFirst).width),
-		startSleepOnGraphicDefaultMinWidth = parseInt(window.getComputedStyle(startSleepOnGraphic).minWidth)
+		startSleepOnGraphicDefaultMinWidth = parseInt(window.getComputedStyle(startSleepOnGraphic).minWidth),
+
+		openPostModalAll = document.querySelectorAll('.open-post-modal'),
+		postModal = document.getElementById('postModal'),
+		closePostModal = document.getElementById('closePostModal')
 		;
 
 	let
@@ -241,4 +246,29 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	calcCycle(timeStartSleeping);
+
+	/********************
+	 * 5. Content modal *
+	 ********************/
+
+	let lastOpenedPost = null;
+
+	 openPostModalAll.forEach(openPostModal => {
+		openPostModal.addEventListener('click', () => {
+			postModal.style.top = '10%';
+			document.body.style.overflow = 'hidden';
+
+			const lastPostId = openPostModal.dataset.postId;
+			lastOpenedPost = document.getElementById(lastPostId);
+			lastOpenedPost.style.visibility = 'visible';
+			lastOpenedPost.style.opacity = 1;
+		})
+	 })
+
+	 closePostModal.addEventListener('click', () => {
+		postModal.style.top = '100%';
+		document.body.style.overflow = 'auto';
+		lastOpenedPost.style.visibility = 'hidden';
+		lastOpenedPost.style.opacity = 0;
+	 })
 })
