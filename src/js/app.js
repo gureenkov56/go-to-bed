@@ -268,7 +268,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	 closePostModal.addEventListener('click', () => {
 		postModal.style.top = '100%';
 		document.body.style.overflow = 'auto';
-		lastOpenedPost.style.visibility = 'hidden';
 		lastOpenedPost.style.opacity = 0;
+		setTimeout(() => {
+			lastOpenedPost.style.visibility = 'hidden';
+		}, 1000);
 	 })
 })
