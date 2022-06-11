@@ -1,13 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./styles/style.css">
-	<title>Document</title>
+	<link rel="icon" href="favicon.ico">
+	<title>Рассчитать циклы сна</title>
 </head>
+
 <body>
-index
+	<!--background-->
+	<div class="bg bg-second"></div>
+	<div class="bg bg-third"></div>
+	<!--background end-->
+
+	<div class="content-container">
+		<header>
+			<div class="header__settings open-setting-modal d-none">
+				<object data="./images/svg/settings-svgrepo-com.svg" type="image/svg+xml" width="23px"
+					height="23px"></object>
+			</div>
+
+			<div class="header__download d-none">
+				<object data="./images/svg/cloud-download-svgrepo-com.svg" type="image/svg+xml" width="30px"
+					height="30px"></object>
+			</div>
+		</header>
+
+		<h1 class="perfect-time__h2">Идеальное время пробуждения</h1>
+		<p class="perfect-time__if d-none" id="perfectTimeIf">если лечь спать в <span id="perfectTimeIfSpan"></span></p>
+		<div class="perfect-time__number" id="perfectTime">
+			<span id="perfectHours"></span>
+			<span id="blinkedColon">:</span>
+			<span id="perfectMinutes"></span>
+		</div>
+		<button class="big perfect-time__button open-setting-modal">Настроить</button>
+
+		<h4>Также легко проснуться в...</h4>
+		<div class="easy-wake-up__wrapper">
+			<span class="timeOfCycleEnding1">1:30</span>
+			<span class="timeOfCycleEnding2">1:30</span>
+			<span class="timeOfCycleEnding3">1:30</span>
+			<span class="timeOfCycleEnding4">1:30</span>
+			<span class="timeOfCycleEnding6">1:30</span>
+		</div>
+
+		<h2>Цикл сна</h2>
+		<div class="wrapper__current-cycle">
+			<span class="current-cycle" id="currentCycle">Глубокий восстановительный сон</span>
+		</div>
+		<p style="text-align: center;">График находится в разработке...</p>
+
+		<div class="cycle-graphic__container d-none">
+			<div class="cycle-graphic__wrapper">
+				<div class="dot dot-1"></div>
+				<div class="dot dot-2 active-dot"></div>
+				<div class="dot dot-3 active-dot"></div>
+				<div class="dot dot-4 active-dot"></div>
+				<div class="dot dot-5 active-dot"></div>
+				<div class="dot dot-6 active-dot"></div>
+
+				<div class="cycle-graphic__wrapper__deep-zone" id="deepZone"></div>
+				<div class="cycle-graphic__wrapper__short-wake-ups" id="shortWakeUpZone"></div>
+
+				<div class="cycle-graphic__fall-block" id="fallBlock" data-color="rgba(138, 235, 219, .4)"></div>
+
+				<div class="cycle-graphic__first">
+					<div class="one-step">
+						<div></div>
+					</div>
+
+					<div class="second-step">
+						<div class="top"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="third-step">
+						<div class="top"></div>
+						<div class="middle"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="fourth-step">
+						<div></div>
+					</div>
+
+				</div>
+
+				<div class="cycle-graphic__second">
+					<div class="one-step"></div>
+					<div class="second-step">
+						<div class="top"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="third-step">
+						<div class="top"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="fourth-step">
+						<div class="top"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="fifth-step">
+						<div class="top"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="sixth-step">
+					</div>
+
+				</div>
+
+				<div class="cycle-graphic__third">
+					<div class="one-step"></div>
+					<div class="second-step">
+						<div class="top"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="third-step">
+						<div class="top"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="fourth-step">
+						<div class="top"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="fifth-step">
+						<div class="top"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="sixth-step">
+					</div>
+
+				</div>
+
+				<div class="cycle-graphic__fourth">
+					<div class="first-step">
+						<div class="top"></div>
+						<div class="middle"></div>
+					</div>
+
+					<div class="second-step">
+						<div class="top"></div>
+						<div class="middle"></div>
+						<div class="bottom"></div>
+					</div>
+
+					<div class="third-step">
+					</div>
+
+				</div>
+
+				<div class="cycle-graphic__fifth">
+					<div class="first-step">
+						<div class="top"></div>
+						<div class="middle"></div>
+					</div>
+
+					<div class="second-step">
+						<div class="top"></div>
+						<div class="middle"></div>
+					</div>
+				</div>
+
+				<div class="cycle-graphic__sixth">
+					<div class="good-morning-text">
+						<h3>Утро доброе!</h3>
+						<p>Улыбнись! Тебя ждет невероятный день!</p>
+					</div>
+				</div>
+
+
+
+			</div>
+
+			<div class="time-list">
+				<div class="time" id="startSleepOnGraphic">23:00</div>
+				<div class="time timeOfCycleEnding1">2:00</div>
+				<div class="time timeOfCycleEnding2">3:30</div>
+				<div class="time timeOfCycleEnding3">2:00</div>
+				<div class="time timeOfCycleEnding4">3:30</div>
+				<div class="time timeOfCycleEnding5">2:00</div>
+			</div>
+		</div>
+
+		<button class="big open-setting-modal">Настроить</button>
+
+		<h3 class="make-better__h2">Сделай свой сон лучше</h3>
+		<div class="make-better__wrapper">
+
+			<div class="post open-post-modal" data-post-id="fiveRules">
+				<div class="post__image">
+					<div class="post__bgc-element">5</div>
+					<h3>5 правил здорового сна</h3>
+				</div>
+			</div>
+
+			<div class="post open-post-modal" data-post-id="offlineStart">
+				<div class="post__image">
+					<div class="post__bgc-element">
+						<img src="./images/svg/cloud-download-svgrepo-com.svg" alt="cloud" height="190px" width="190px">
+					</div>
+					<h3>Рассчитай свой сон оффлайн</h3>
+				</div>
+			</div>
+
+			<div class="post open-post-modal" data-post-id="whyImportant">
+				<div class="post__image">
+					<div class="post__bgc-element">?</div>
+					<h3>Почему важен здоровый сон</h3>
+				</div>
+			</div>
+		</div>
+
+		<div class="say-thanks">
+			<div class="say-thanks__bg"></div>
+			<div class="say-thanks__content">
+				<h4>Находите проект полезным для себя?</h4>
+				<button class="big">Сказать спасибо</button>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="footer__text">
+
+				<span>go-to-bed.ru</span><br />
+				<span>Автор проекта <a href="gureenkov56.ru">gureenkov56</a></span>
+			</div>
+			<div class="footer__bg"></div>
+		</footer>
+	</div>
+
+
+	<div class="modal">
+		<div class="modal__container">
+			<div class="modal__close close-modal-btn">×</div>
+			<div class="modal__settings">
+				<h3>Ложусь спать в...</h3>
+				<input type="time" value="23:00" id="inputStartSleeping">
+				<button class="big close-modal-btn" id="calcWithStartSleeping">Рассчитать от <span
+						id="btnSpanStartSleeping">23:00</span></button>
+				<p>или</p>
+				<button class="big close-modal-btn" id="iGoToBedNow">Я ложусь сейчас</button>
+
+				<div class="d-none">
+					<h3>Нужно проснуться в...</h3>
+					<input type="time" value="07:00" id="inputNeedWakeUp">
+					<button class="big close-modal-btn" id="calcWithNeedWakeUp">Рассчитать к <span
+							id="btnSpanNeedWakeUp">07:00</span></button>
+				</div>
+
+				<p class="time-for-falling">Чтобы уснуть мне нужно
+					<select id="selectTimeForFallingSleep">
+						<option value="0">0</option>
+						<option value="15" selected="selected">15</option>
+						<option value="30">30</option>
+						<option value="45">45</option>
+						<option value="60">60</option>
+					</select>
+					минут
+				</p>
+				<p class="note">В среднем требуется 15 минут</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="post-modal" id="postModal">
+		<div class="post-modal__header" id="closePostModal">×</div>
+		<div class="post-modal__content-scroll-wrapper">
+			<div class="post-modal__content">
+				<div id="fiveRules">
+					<h1>5 правил хорошего сна</h1>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi iusto nisi molestiae. Rerum
+						expedita
+						deserunt aperiam odio blanditiis vero unde?</p>
+
+				</div>
+
+				<div id="offlineStart">
+					<h1>Рассчитай свой сон оффлайн</h1>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi iusto nisi molestiae. Rerum
+						expedita
+						deserunt aperiam odio blanditiis vero unde?</p>
+
+				</div>
+
+				<div id="whyImportant">
+					<h1>Почему важен хороший сон</h1>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi iusto nisi molestiae. Rerum
+						expedita
+						deserunt aperiam odio blanditiis vero unde?</p>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 </body>
+
+<script src="./js/app.js"></script>
+
 </html>
