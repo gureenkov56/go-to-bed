@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const
 		deepZone = document.getElementById('deepZone'),
 		shortWakeUpZone = document.getElementById('shortWakeUpZone'),
-		//currentCycle = document.getElementById('currentCycle'),
+		currentCycle = document.getElementById('currentCycle'),
 		fallBlock = document.getElementById('fallBlock'),
 		modal = document.querySelector('.modal'),
 		openSettingModalBtn = document.querySelectorAll('.open-setting-modal'),
@@ -36,13 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		startSleepOnGraphic = document.getElementById('startSleepOnGraphic'),
 		activeDotAll = document.querySelectorAll('.active-dot'),
-		//cycleGraphicFirst = document.querySelector('.cycle-graphic__first'),
 		widthOfOneCycle = 180,
 		startSleepOnGraphicDefaultMinWidth = parseInt(window.getComputedStyle(startSleepOnGraphic).minWidth),
 
 		openPostModalAll = document.querySelectorAll('.open-post-modal'),
 		postModal = document.getElementById('postModal'),
-		closePostModal = document.getElementById('closePostModal')
+		closePostModal = document.getElementById('closePostModal'),
+		dreamShowZone = document.getElementById('dreamShowZone')
 		;
 
 	let
@@ -64,6 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	fallBlock.addEventListener('click', (event) => sleepZones('Погружение в сон', event.target));
 	fallBlock.addEventListener('mouseover', (event) => sleepZones('Погружение в сон', event.target));
+
+	dreamShowZone.addEventListener('click', (event) => sleepZones('Снятся сны', event.target));
+	dreamShowZone.addEventListener('mouseover', (event) => sleepZones('Снятся сны', event.target));
 
 
 
@@ -146,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	function calcCycle(goToBedTime = null) {
-		console.log('caclCycle start...');
 		let currentTime = new Date;
 
 		if (goToBedTime != null) {
@@ -217,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	function drowCycleGraphic(startSleepDate) {
 		fallBlock.style.minWidth = timeForFallingDown * 2 + 'px';
 		shortWakeUpZone.style.left = timeForFallingDown * 2 + 130 + 'px';
+		dreamShowZone.style.left = timeForFallingDown * 2 + 480 + 'px';
 		deepZone.style.left = timeForFallingDown * 2 + 'px';
 		activeDotAll.forEach(dot => {
 			dot.style.left = ( widthOfOneCycle * (dot.classList[1][4] - 1) + (timeForFallingDown * 2) ) + "px";
@@ -237,10 +240,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		perfectTimeIf.classList.add('d-none');
 		timeStartSleeping = null;
 		calcCycle(timeStartSleeping);
-	})
-
-	calcWithNeedWakeUp.addEventListener('click', () => {
-
 	})
 
 

@@ -140,7 +140,7 @@ body {
 			border-bottom: 2px solid white;
 			padding-bottom: 1rem;
 			position: relative;
-			min-width: 1400px;
+			min-width: 1200px;
 
 			&__deep-zone {
 				background-color: $blueBase;
@@ -163,6 +163,20 @@ body {
 				cursor: pointer;
 				transition: left .4s;
 				transition-delay: 400ms;
+			}
+
+			&__dream-show-zone {
+				background-color: rgba($color: rgb(148, 115, 255), $alpha: .4);
+				height: 2rem;
+				width: calc($oneCycle * 2.3);
+				top: calc(80px);
+
+				position: absolute;
+				cursor: pointer;
+				left: calc($oneCycle * 3);
+				transition: left .4s;
+				transition-delay: 300ms;
+
 			}
 
 			.dot {
@@ -201,7 +215,7 @@ body {
 		&__svg {
 			svg {
 				height: 291px;
-				width: 1400px;
+				width: 1200px;
 			}
 		}
 
