@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const
 		deepZone = document.getElementById('deepZone'),
 		shortWakeUpZone = document.getElementById('shortWakeUpZone'),
-		currentCycle = document.getElementById('currentCycle'),
+		//currentCycle = document.getElementById('currentCycle'),
 		fallBlock = document.getElementById('fallBlock'),
 		modal = document.querySelector('.modal'),
 		openSettingModalBtn = document.querySelectorAll('.open-setting-modal'),
@@ -36,8 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		startSleepOnGraphic = document.getElementById('startSleepOnGraphic'),
 		activeDotAll = document.querySelectorAll('.active-dot'),
-		cycleGraphicFirst = document.querySelector('.cycle-graphic__first'),
-		widthOfOneCycle = parseInt(window.getComputedStyle(cycleGraphicFirst).width),
+		//cycleGraphicFirst = document.querySelector('.cycle-graphic__first'),
+		widthOfOneCycle = 180,
 		startSleepOnGraphicDefaultMinWidth = parseInt(window.getComputedStyle(startSleepOnGraphic).minWidth),
 
 		openPostModalAll = document.querySelectorAll('.open-post-modal'),
@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (localStorage.getItem('timeForFallingDown')) {
 		selectTimeForFallingSleep.value = localStorage.getItem('timeForFallingDown');
 		timeForFallingDown = selectTimeForFallingSleep.value;
-		calcCycle(timeStartSleeping);
 	}
 
 	selectTimeForFallingSleep.addEventListener('change', () => {
@@ -147,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	function calcCycle(goToBedTime = null) {
+		console.log('caclCycle start...');
 		let currentTime = new Date;
 
 		if (goToBedTime != null) {
@@ -206,8 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	}
 
-	calcCycle(timeStartSleeping);
-
 	function formatTime(number) {
 		if (Number(number) < 10) {
 			return '0' + number;
@@ -245,7 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	})
 
-	calcCycle(timeStartSleeping);
 
 	/********************
 	 * 5. Content modal *
@@ -273,4 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			lastOpenedPost.style.visibility = 'hidden';
 		}, 1000);
 	 })
+
+
+
+	calcCycle(timeStartSleeping);
+
 })

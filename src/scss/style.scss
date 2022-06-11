@@ -140,7 +140,7 @@ body {
 			border-bottom: 2px solid white;
 			padding-bottom: 1rem;
 			position: relative;
-			min-width: calc($oneCycle * 6);
+			min-width: 1400px;
 
 			&__deep-zone {
 				background-color: $blueBase;
@@ -195,6 +195,13 @@ body {
 				}
 
 
+			}
+		}
+
+		&__svg {
+			svg {
+				height: 291px;
+				width: 1400px;
 			}
 		}
 
