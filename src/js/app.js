@@ -36,13 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		startSleepOnGraphic = document.getElementById('startSleepOnGraphic'),
 		activeDotAll = document.querySelectorAll('.active-dot'),
-		cycleGraphicFirst = document.querySelector('.cycle-graphic__first'),
-		widthOfOneCycle = parseInt(window.getComputedStyle(cycleGraphicFirst).width),
+		widthOfOneCycle = 180,
 		startSleepOnGraphicDefaultMinWidth = parseInt(window.getComputedStyle(startSleepOnGraphic).minWidth),
 
 		openPostModalAll = document.querySelectorAll('.open-post-modal'),
 		postModal = document.getElementById('postModal'),
-		closePostModal = document.getElementById('closePostModal')
+		closePostModal = document.getElementById('closePostModal'),
+		dreamShowZone = document.getElementById('dreamShowZone')
 		;
 
 	let
@@ -64,6 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	fallBlock.addEventListener('click', (event) => sleepZones('Погружение в сон', event.target));
 	fallBlock.addEventListener('mouseover', (event) => sleepZones('Погружение в сон', event.target));
+
+	dreamShowZone.addEventListener('click', (event) => sleepZones('Снятся сны', event.target));
+	dreamShowZone.addEventListener('mouseover', (event) => sleepZones('Снятся сны', event.target));
 
 
 
@@ -119,7 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (localStorage.getItem('timeForFallingDown')) {
 		selectTimeForFallingSleep.value = localStorage.getItem('timeForFallingDown');
 		timeForFallingDown = selectTimeForFallingSleep.value;
-		calcCycle(timeStartSleeping);
 	}
 
 	selectTimeForFallingSleep.addEventListener('change', () => {
@@ -206,8 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	}
 
-	calcCycle(timeStartSleeping);
-
 	function formatTime(number) {
 		if (Number(number) < 10) {
 			return '0' + number;
@@ -219,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	function drowCycleGraphic(startSleepDate) {
 		fallBlock.style.minWidth = timeForFallingDown * 2 + 'px';
 		shortWakeUpZone.style.left = timeForFallingDown * 2 + 130 + 'px';
+		dreamShowZone.style.left = timeForFallingDown * 2 + 480 + 'px';
 		deepZone.style.left = timeForFallingDown * 2 + 'px';
 		activeDotAll.forEach(dot => {
 			dot.style.left = ( widthOfOneCycle * (dot.classList[1][4] - 1) + (timeForFallingDown * 2) ) + "px";
@@ -241,11 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		calcCycle(timeStartSleeping);
 	})
 
-	calcWithNeedWakeUp.addEventListener('click', () => {
-
-	})
-
-	calcCycle(timeStartSleeping);
 
 	/********************
 	 * 5. Content modal *
@@ -273,4 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			lastOpenedPost.style.visibility = 'hidden';
 		}, 1000);
 	 })
+
+
+
+	calcCycle(timeStartSleeping);
+
 })
