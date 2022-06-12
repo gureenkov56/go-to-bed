@@ -76,7 +76,7 @@ body {
 			padding-bottom: 1rem;
 
 			&::-webkit-scrollbar {
-				width: 0;
+				display: none;
 			}
 
 			.time-list {
@@ -599,7 +599,7 @@ body {
 			position: relative;
 
 			&::-webkit-scrollbar {
-				width: 0;
+				display: none;
 			}
 
 			.post {
