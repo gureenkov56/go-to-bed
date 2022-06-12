@@ -12,7 +12,8 @@ $oneCycle: 180px;
 body {
 	margin: 0;
 	color: white;
-	background-color: $primaryBgcolor;
+	background: $primaryBgcolor;
+
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
 
@@ -24,37 +25,6 @@ body {
 		opacity: 0 !important;
 	}
 
-	.bg {
-		position: fixed;
-		filter: blur(150px);
-		transform: rotate(-45deg);
-		border-radius: 67px;
-
-
-		&-second {
-			transform: rotate(-45deg);
-			background-color: $secondBgcolor;
-			height: 100vh;
-			width: 100vw;
-			right: -50%;
-			top: 20%;
-
-			animation: 3s infinite alternate secondtransform;
-		}
-
-		&-third {
-			background-color: $thirdBgcolor;
-			width: 100%;
-			height: 100vw;
-			top: 80%;
-			left: -30%;
-
-			animation: 3s infinite alternate thirdtransform;
-
-		}
-
-	}
-
 	header {
 		display: flex;
 		justify-content: space-between;
@@ -63,11 +33,9 @@ body {
 	}
 
 	.content-container {
-		max-width: 1000px;
-		margin: 0 auto;
+		background: linear-gradient(to top, #447dda, $thirdBgcolor, #c1b0f0, $primaryBgcolor);
 		padding: 1rem;
-		z-index: 5;
-		position: relative;
+		background-color: #ccc;
 
 		h1,
 		h2,
@@ -102,6 +70,8 @@ body {
 
 	.cycle-graphic {
 		&__container {
+			max-width: 1000px;
+			margin: 0 auto;
 			overflow-x: scroll;
 			padding-bottom: 1rem;
 
@@ -592,7 +562,7 @@ body {
 			}
 
 			#blinkedColon {
-				animation: 1.5s infinite alternate blinkColonAnimate;
+				//animation: 1.5s infinite alternate blinkColonAnimate;
 			}
 		}
 
@@ -699,18 +669,6 @@ body {
 		position: relative;
 		height: 4rem;
 
-		&__bg {
-			background-color: rgba($color: $thirdBgcolor, $alpha: 1);
-			position: absolute;
-			width: 50%;
-			height: 100%;
-			filter: blur(50px);
-			left: 0;
-			right: 0;
-			margin-right: auto;
-			margin-left: auto;
-		}
-
 		&__text {
 			position: absolute;
 			width: 100%;
@@ -759,7 +717,7 @@ body {
 			flex-basis: 400px;
 
 			border-radius: 20px;
-			background: linear-gradient(rgba(148, 182, 237, 1) 50%, rgba(69, 127, 218, 1) 100%);
+			background: linear-gradient($primaryBgcolor, #c1b0f0);
 
 			visibility: hidden;
 			opacity: 0;
@@ -834,7 +792,7 @@ body {
 		left: 0;
 		z-index: 10;
 		background: rgb(64, 112, 153);
-		background: linear-gradient(349deg, rgba(64, 112, 153, 1) 39%, rgba(70, 161, 240, 1) 100%);
+		background: linear-gradient(180deg,#94b6ed 0,#73a2ed 100%);
 		border-radius: 20px 20px 0 0;
 
 		transition: top 1s;
@@ -844,7 +802,7 @@ body {
 			font-size: 3rem;
 			border-radius: 20px 20px 0 0;
 			padding: 0 10px;
-			box-shadow: 0 5px 5px 0 rgba(64, 112, 153, 1);
+			box-shadow: 0 5px 5px 0 #5987d1;
 			cursor: pointer;
 			position: relative;
 		}
@@ -864,12 +822,17 @@ body {
 			max-width: 600px;
 			margin: 0 auto;
 
-			>div {
+			> div {
 				height: 0;
 				opacity: 0;
 				visibility: hidden;
-				transition: opacity 1s;
-				transition-delay: 1s;
+				transition: opacity .5s;
+				transition-delay: .5s;
+
+				> *:last-child {
+					padding-bottom: 100px;
+					margin-bottom: 100px;
+				}
 			}
 		}
 	}
