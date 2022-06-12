@@ -802,7 +802,7 @@ body {
 			font-size: 3rem;
 			border-radius: 20px 20px 0 0;
 			padding: 0 10px;
-			box-shadow: 0 5px 5px 0 #5987d1;
+			box-shadow: 0 5px 5px 0 #73a2ed;
 			cursor: pointer;
 			position: relative;
 		}
@@ -826,7 +826,7 @@ body {
 				height: 0;
 				opacity: 0;
 				visibility: hidden;
-				transition: opacity .5s;
+				transition: opacity .3s;
 				transition-delay: .5s;
 
 				> *:last-child {
