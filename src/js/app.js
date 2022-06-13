@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		dreamShowZone.style.left = timeForFallingDown * 2 + 480 + 'px';
 		deepZone.style.left = timeForFallingDown * 2 + 'px';
 		activeDotAll.forEach(dot => {
-			dot.style.left = ( widthOfOneCycle * (dot.classList[1][4] - 1) + (timeForFallingDown * 2) ) + "px";
+			dot.style.left = (widthOfOneCycle * (dot.classList[1][4] - 1) + (timeForFallingDown * 2)) + "px";
 		})
 		startSleepOnGraphic.innerHTML = formatTime(startSleepDate.getHours()) + ":" + formatTime(startSleepDate.getMinutes());
 		startSleepOnGraphic.style.minWidth = (startSleepOnGraphicDefaultMinWidth + timeForFallingDown * 2) + 'px';
@@ -249,26 +249,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	let lastOpenedPost = null;
 
-	 openPostModalAll.forEach(openPostModal => {
+	openPostModalAll.forEach(openPostModal => {
 		openPostModal.addEventListener('click', () => {
 			postModal.style.top = '10%';
 			document.body.style.overflow = 'hidden';
 
 			const lastPostId = openPostModal.dataset.postId;
 			lastOpenedPost = document.getElementById(lastPostId);
+			lastOpenedPost.classList.remove('d-none');
 			lastOpenedPost.style.visibility = 'visible';
-			lastOpenedPost.style.opacity = 1;
+			setTimeout(() => {
+				lastOpenedPost.style.opacity = 1;
+			}, 100);
 		})
-	 })
+	})
 
-	 closePostModal.addEventListener('click', () => {
+	closePostModal.addEventListener('click', () => {
 		postModal.style.top = '100%';
 		document.body.style.overflow = 'auto';
 		lastOpenedPost.style.opacity = 0;
 		setTimeout(() => {
+			lastOpenedPost.classList.add('d-none');
 			lastOpenedPost.style.visibility = 'hidden';
-		}, 1000);
-	 })
+		}, 500);
+	})
 
 
 
