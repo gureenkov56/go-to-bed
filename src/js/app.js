@@ -280,5 +280,4 @@ document.addEventListener('DOMContentLoaded', () => {
 	}, 60000);
 
 	calcCycle(timeStartSleeping);
-
 })

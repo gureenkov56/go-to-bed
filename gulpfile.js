@@ -19,7 +19,7 @@ function styles() {
 
 function startwatch() {
 	watch('src/scss/*', styles);
-	watch(['src/*.html', 'src/*.php', 'src/**/*.html', 'src/**/*.php'], htmlAndPhp);
+	watch('src/*.*', justReplace);
 	watch('src/js/*.js', js);
 }
 
@@ -28,8 +28,8 @@ async function cleanDistFolder() {
 	.pipe(clean());
 }
 
-function htmlAndPhp() {
-	return src(['src/*.html', 'src/*.php', 'src/**/*.html', 'src/**/*.php'], {base: 'src/'})
+function justReplace() {
+	return src('src/*.*', {base: 'src/'})
 	.pipe(dest('dist/'))
 }
 
@@ -44,22 +44,7 @@ function images() {
 	.pipe(dest('dist/'))
 }
 
-function favicon() {
-	return src('src/*.ico')
-	.pipe(dest('dist/'))
-}
-
-
-
-exports.styles = styles;
-exports.startwatch = startwatch;
-exports.cleanDistFolder = cleanDistFolder;
-exports.htmlAndPhp = htmlAndPhp;
-exports.js = js;
-
-
-
-exports.start = series(cleanDistFolder, htmlAndPhp, styles, js, images, favicon, startwatch);
+exports.start = series(cleanDistFolder, justReplace, styles, js, images, startwatch);
 
 
 
