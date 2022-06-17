@@ -1,9 +1,9 @@
 {
-	"name": "goToBed",
-	"short_name": "goToBed",
+	"name": "GoToBed",
+	"short_name": "GoToBed",
 	"theme_color": "#94B6ED",
 	"background_color": "#94B6ED",
-	"display": "standalone",
+	"display": "fullscreen",
 	"orientation": "portrait",
 	"scope": "/",
 	"start_url": "/",
