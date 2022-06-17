@@ -281,4 +281,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	calcCycle(timeStartSleeping);
 
+	/*****
+	 * X. ServiceWorker reg *
+	 */
+
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register('serviceWorker.js');
+	}
 })
