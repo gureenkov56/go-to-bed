@@ -619,12 +619,14 @@ body {
 					cursor: pointer;
 
 
-					h3 {
+					h3, h4 {
 						margin: 0;
 						padding: 140px 10px 0 10px;
 						text-align: left;
 						position: absolute;
 					}
+
+
 				}
 
 				&__bgc-element {
@@ -821,6 +823,11 @@ body {
 			max-width: 600px;
 			margin: 0 auto;
 
+			img {
+				max-width: 90%;
+				margin: 1rem 0 2rem 0;
+			}
+
 			>div {
 				height: 0;
 				opacity: 0;
@@ -834,7 +841,10 @@ body {
 
 				* {
 					padding: 0 10px;
+				}
 
+				ul, ol {
+					padding-inline-start: 40px;
 				}
 
 				.ta-center {
@@ -854,9 +864,11 @@ body {
 
 					img {
 						width: 100%;
+						max-width: 100%;
 						height: auto;
 						filter: brightness(.5);
 						padding: 0;
+						margin: 0;
 					}
 
 					div {

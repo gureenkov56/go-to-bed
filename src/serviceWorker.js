@@ -1,4 +1,4 @@
-const cacheVersionName = 'gtb-cache-v4';
+const cacheVersionName = 'gtb-cache-v5';
 
 
 self.addEventListener('install', event => {
