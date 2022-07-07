@@ -44,7 +44,7 @@ function images() {
 	.pipe(dest('dist/'))
 }
 
-exports.start = series(cleanDistFolder, justReplace, styles, js, images, startwatch);
+exports.start = series(justReplace, styles, js, images, startwatch);
 
 
 

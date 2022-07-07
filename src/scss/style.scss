@@ -619,12 +619,14 @@ body {
 					cursor: pointer;
 
 
-					h3 {
+					h3, h4 {
 						margin: 0;
 						padding: 140px 10px 0 10px;
 						text-align: left;
 						position: absolute;
 					}
+
+
 				}
 
 				&__bgc-element {
@@ -661,7 +663,7 @@ body {
 			width: 100%;
 			border-radius: 50%;
 			background: $thanksBgColor;
-			background: radial-gradient(closest-side, $thanksBgColor 0%, rgba(0,0,0,0) 100%);
+			background: radial-gradient(closest-side, $thanksBgColor 0%, rgba(0, 0, 0, 0) 100%);
 		}
 	}
 
@@ -792,7 +794,7 @@ body {
 		left: 0;
 		z-index: 10;
 		background: rgb(64, 112, 153);
-		background: linear-gradient(180deg,#94b6ed 0,#73a2ed 100%);
+		background: linear-gradient(180deg, #94b6ed 0, #73a2ed 100%);
 		border-radius: 20px 20px 0 0;
 
 		transition: top 1s;
@@ -817,20 +819,32 @@ body {
 		}
 
 		&__content {
-			padding: 0 10px;
 			padding-bottom: 100px;
 			max-width: 600px;
 			margin: 0 auto;
 
-			> div {
+			img {
+				max-width: 90%;
+				margin: 1rem 0 2rem 0;
+			}
+
+			>div {
 				height: 0;
 				opacity: 0;
 				visibility: hidden;
 				transition: opacity .3s;
 				transition-delay: .5s;
 
-				> *:last-child {
+				>*:last-child {
 					padding-bottom: 6rem;
+				}
+
+				* {
+					padding: 0 10px;
+				}
+
+				ul, ol {
+					padding-inline-start: 40px;
 				}
 
 				.ta-center {
@@ -839,6 +853,38 @@ body {
 
 				a {
 					color: rgb(255, 255, 255);
+				}
+
+				figure {
+					margin: 0;
+					z-index: -1;
+					position: relative;
+					padding: 0;
+
+
+					img {
+						width: 100%;
+						max-width: 100%;
+						height: auto;
+						filter: brightness(.5);
+						padding: 0;
+						margin: 0;
+					}
+
+					div {
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						right: 0;
+						left: 0;
+
+						display: flex;
+						justify-content: center;
+						align-items: center;
+
+						text-align: center;
+					}
+
 				}
 			}
 
