@@ -736,6 +736,28 @@ body {
 			margin: 0 0 0 auto;
 			cursor: pointer;
 		}
+		
+		.calc-type {
+			max-width: 250px;
+			margin: 20px auto;
+			background-color: rgba(0,0,0,.2);
+			border-radius: 20px;
+			position: relative;
+
+			display: flex;
+			&__option {
+				flex: 1;
+				margin: 3px;
+				padding: 5px;
+				border-radius: 20px;
+				cursor: pointer;
+				transition: background-color .6s;
+
+				&.active {
+					background-color: $primaryBgcolor;
+				}
+			}
+		}
 
 		&__settings {
 			text-align: center;
