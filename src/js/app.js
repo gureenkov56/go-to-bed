@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         perfectTimeIfSpan.innerHTML = timeForCalc;
 
         if (calcTypeWakeUpTime.classList.contains('active')) {
-            h2.innerHTML = 'Идеальное время баю бай';
+            h2.innerHTML = 'Идеальное время пойти в кроватку';
             perfectTimeIfText.innerHTML = 'чтобы проснуться в';
             otherTimeH4.innerHTML = 'Также можно лечь спать...';
         } else {
