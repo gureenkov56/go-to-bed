@@ -1,4 +1,4 @@
-const cacheVersionName = 'gtb-cache-v8';
+const cacheVersionName = 'gtb-cache-v9';
 
 self.addEventListener('activate', event => {
 	event.waitUntil(
