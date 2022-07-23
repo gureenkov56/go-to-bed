@@ -188,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let timeOfCycleEndingIArr = document.querySelectorAll(`.timeOfCycleEnding${i}`);
 
-            console.log(`timeOfCycleEnding${i} => `, formatTime(currentTime.getHours()) + ':' + formatTime(currentTime.getMinutes()));
             timeOfCycleEndingIArr.forEach(el => {
                 el.innerHTML = formatTime(currentTime.getHours()) + ':' + formatTime(currentTime.getMinutes());
             })
