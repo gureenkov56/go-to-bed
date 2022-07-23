@@ -35,7 +35,7 @@ function justReplace() {
 
 function js() {
 	return src('src/js/*.js')
-	//.pipe(uglify())
+	.pipe(uglify())
 	.pipe(dest('dist/js/'))
 }
 

@@ -103,6 +103,24 @@ body {
 					}
 				}
 			}
+
+			.reverse {
+				flex-direction: row-reverse;
+
+				.time {
+					&:last-child {
+						min-width: 120px;
+						text-align: left;
+						font-size: 1rem;
+					}
+
+					&:first-child {
+						font-size: 1rem;
+						min-width: 90px !important;
+						text-align: right !important;
+					}
+				}
+			}
 		}
 
 		&__wrapper {
