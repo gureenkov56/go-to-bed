@@ -79,7 +79,7 @@
 	<div class="content-container">
 
 		<h1 class="perfect-time__h2">Идеальное время пробуждения</h1>
-		<p class="perfect-time__if d-none" id="perfectTimeIf">если лечь спать в <span id="perfectTimeIfSpan"></span></p>
+		<p class="perfect-time__if d-none" id="perfectTimeIf"><span id="perfectTimeIfText"></span> <span id="perfectTimeIfSpan"></span></p>
 		<div class="perfect-time__number" id="perfectTime">
 			<span id="perfectHours"></span>
 			<span id="blinkedColon">:</span>
@@ -87,7 +87,7 @@
 		</div>
 		<button class="big perfect-time__button open-setting-modal">Настроить</button>
 
-		<h4>Также легко проснуться в...</h4>
+		<h4 id="otherTimeH4">Также легко проснуться в...</h4>
 		<div class="easy-wake-up__wrapper">
 			<span class="timeOfCycleEnding1">1:30</span>
 			<span class="timeOfCycleEnding2">1:30</span>
@@ -252,17 +252,10 @@
 					<div class="calc-type__option" id="calcTypeWakeUpTime">Встаю</div>
 				</div>
 				<input type="time" value="23:00" id="inputStartSleeping">
-				<button class="big close-modal-btn" id="calcWithStartSleeping">Рассчитать от <span
+				<button class="big close-modal-btn" id="calcWithStartSleeping">Рассчитать <span id="otOrK">от</span> <span
 						id="btnSpanStartSleeping">23:00</span></button>
 				<p>или</p>
 				<button class="big close-modal-btn" id="iGoToBedNow">Я ложусь сейчас</button>
-
-				<div class="d-none">
-					<h3>Нужно проснуться в...</h3>
-					<input type="time" value="07:00" id="inputNeedWakeUp">
-					<button class="big close-modal-btn" id="calcWithNeedWakeUp">Рассчитать к <span
-							id="btnSpanNeedWakeUp">07:00</span></button>
-				</div>
 
 				<p class="time-for-falling">Чтобы уснуть мне нужно
 					<select id="selectTimeForFallingSleep">

@@ -6,48 +6,55 @@
  * 3. Time
  * 4. Calc cycle
  * 5. Content modal
+ * 6. Service Worker reg
+ * 7. Calc type to wake up time
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
 	const
-		deepZone = document.getElementById('deepZone'),
-		shortWakeUpZone = document.getElementById('shortWakeUpZone'),
-		currentCycle = document.getElementById('currentCycle'),
-		fallBlock = document.getElementById('fallBlock'),
-		modal = document.querySelector('.modal'),
+		deepZone 			= document.getElementById('deepZone'),
+		shortWakeUpZone 	= document.getElementById('shortWakeUpZone'),
+		currentCycle 		= document.getElementById('currentCycle'),
+		fallBlock 			= document.getElementById('fallBlock'),
+		modal 				= document.querySelector('.modal'),
 		openSettingModalBtn = document.querySelectorAll('.open-setting-modal'),
 
-		modalContainer = document.querySelector('.modal__container'),
-		inputStartSleeping = document.getElementById('inputStartSleeping'),
-		btnSpanStartSleeping = document.getElementById('btnSpanStartSleeping'),
-		inputNeedWakeUp = document.getElementById('inputNeedWakeUp'),
+		modalContainer 			= document.querySelector('.modal__container'),
+		inputStartSleeping 		= document.getElementById('inputStartSleeping'),
+		btnSpanStartSleeping 	= document.getElementById('btnSpanStartSleeping'),
+		h2						= document.querySelector('.perfect-time__h2'),
+		otherTimeH4 			= document.getElementById('otherTimeH4'),
 
-		btnSpanNeedWakeUp = document.getElementById('btnSpanNeedWakeUp'),
-		calcWithStartSleeping = document.getElementById('calcWithStartSleeping'),
-		selectTimeForFallingSleep = document.getElementById('selectTimeForFallingSleep'),
-		closeModalBtns = document.querySelectorAll('.close-modal-btn'),
+		calcWithStartSleeping 		= document.getElementById('calcWithStartSleeping'),
+		selectTimeForFallingSleep 	= document.getElementById('selectTimeForFallingSleep'),
+		closeModalBtns 				= document.querySelectorAll('.close-modal-btn'),
+		perfectTimeIfText 			= document.getElementById('perfectTimeIfText'),
 
-		perfectHours = document.getElementById('perfectHours'),
-		perfectMinutes = document.getElementById('perfectMinutes'),
-		perfectTimeIfSpan = document.getElementById('perfectTimeIfSpan'),
-		perfectTimeIf = document.getElementById('perfectTimeIf'),
-		iGoToBedNow = document.getElementById('iGoToBedNow'),
+		perfectHours 		= document.getElementById('perfectHours'),
+		perfectMinutes 		= document.getElementById('perfectMinutes'),
+		perfectTimeIfSpan 	= document.getElementById('perfectTimeIfSpan'),
+		perfectTimeIf 		= document.getElementById('perfectTimeIf'),
+		iGoToBedNow 		= document.getElementById('iGoToBedNow'),
 
-		startSleepOnGraphic = document.getElementById('startSleepOnGraphic'),
-		activeDotAll = document.querySelectorAll('.active-dot'),
-		widthOfOneCycle = 180,
-		startSleepOnGraphicDefaultMinWidth = parseInt(window.getComputedStyle(startSleepOnGraphic).minWidth),
+		startSleepOnGraphic 				= document.getElementById('startSleepOnGraphic'),
+		activeDotAll 						= document.querySelectorAll('.active-dot'),
+		widthOfOneCycle 					= 180,
+		startSleepOnGraphicDefaultMinWidth 	= parseInt(window.getComputedStyle(startSleepOnGraphic).minWidth),
 
-		openPostModalAll = document.querySelectorAll('.open-post-modal'),
-		postModal = document.getElementById('postModal'),
-		closePostModal = document.getElementById('closePostModal'),
-		dreamShowZone = document.getElementById('dreamShowZone')
+		openPostModalAll 	= document.querySelectorAll('.open-post-modal'),
+		postModal 			= document.getElementById('postModal'),
+		closePostModal 		= document.getElementById('closePostModal'),
+		dreamShowZone 		= document.getElementById('dreamShowZone'),
+
+		calcTypeWakeUpTime 	= document.getElementById('calcTypeWakeUpTime'),
+		calcTypeGoToBedTime = document.getElementById('calcTypeGoToBedTime'),
+		otOrK 				= document.getElementById('otOrK')
 		;
 
 	let
 		timeForFallingDown = localStorage.getItem('timeForFallingDown') ? localStorage.getItem('timeForFallingDown') : 15,
-		timeStartSleeping = null,
+		timeForCalc = null,
 		timeWasSetted = false
 		;
 
@@ -98,24 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	 ***********/
 
 	// start sleeping time
-	if (localStorage.getItem('timeStartSleeping')) {
-		inputStartSleeping.value = localStorage.getItem('timeStartSleeping');
+	if (localStorage.getItem('timeForCalc')) {
+		inputStartSleeping.value = localStorage.getItem('timeForCalc');
 		btnSpanStartSleeping.innerHTML = inputStartSleeping.value;
 	}
 
 	inputStartSleeping.addEventListener('change', () => {
 		btnSpanStartSleeping.innerHTML = inputStartSleeping.value;
-	})
-
-	// need wake up time
-	if (localStorage.getItem('timeNeedWakeUp')) {
-		inputNeedWakeUp.value = localStorage.getItem('timeNeedWakeUp');
-		btnSpanNeedWakeUp.innerHTML = inputNeedWakeUp.value;
-	}
-
-	inputNeedWakeUp.addEventListener('change', () => {
-		localStorage.setItem('timeNeedWakeUp', inputNeedWakeUp.value);
-		btnSpanNeedWakeUp.innerHTML = inputNeedWakeUp.value;
 	})
 
 	// I need in X time for falling sleep
@@ -144,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			document.body.style.overflow = 'scroll';
 
-			calcCycle(timeStartSleeping);
+			calcCycle(timeForCalc);
 		})
 	})
 
@@ -229,17 +225,28 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	calcWithStartSleeping.addEventListener('click', () => {
-		timeStartSleeping = inputStartSleeping.value;
-		localStorage.setItem('timeStartSleeping', timeStartSleeping);
+		timeForCalc = inputStartSleeping.value;
+		localStorage.setItem('timeForCalc', timeForCalc);
 		perfectTimeIf.classList.remove('d-none');
-		perfectTimeIfSpan.innerHTML = timeStartSleeping;
-		calcCycle(timeStartSleeping);
+		perfectTimeIfSpan.innerHTML = timeForCalc;
+
+		if (calcTypeWakeUpTime.classList.contains('active')) {
+			h2.innerHTML = 'Идеальное время баю бай';
+			perfectTimeIfText.innerHTML = 'чтобы проснуться в';
+			otherTimeH4.innerHTML = 'Также можно лечь спать...';
+		} else {
+			h2.innerHTML = 'Идеальное время пробуждения';
+			perfectTimeIfText.innerHTML = 'если лечь спать в';
+			otherTimeH4.innerHTML = 'Также легко проснуться в...';
+		}
+
+		calcCycle(timeForCalc);
 	})
 
 	iGoToBedNow.addEventListener('click', () => {
 		perfectTimeIf.classList.add('d-none');
-		timeStartSleeping = null;
-		calcCycle(timeStartSleeping);
+		timeForCalc = null;
+		calcCycle(timeForCalc);
 	})
 
 
@@ -276,16 +283,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 	setInterval(() => {
-		calcCycle(timeStartSleeping);
+		calcCycle(timeForCalc);
 	}, 60000);
 
-	calcCycle(timeStartSleeping);
+	calcCycle(timeForCalc);
 
 	/*****
-	 * X. ServiceWorker reg *
+	 * 6. ServiceWorker reg *
 	 */
 
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('serviceWorker.js');
 	}
+
+	/******************
+	 * 7. Calc type to wake up time
+	 */
+
+	calcTypeWakeUpTime.addEventListener('click', () => {
+		calcTypeWakeUpTime.classList.add('active');
+		calcTypeGoToBedTime.classList.remove('active');
+		localStorage.setItem('calcType', 'calcToWakeUpTime');
+		otOrK.innerHTML = 'к';
+	});
+
+	if (localStorage.getItem('calcType') === 'calcToWakeUpTime') {
+		calcTypeWakeUpTime.click();
+	}
+
+	calcTypeGoToBedTime.addEventListener('click', () => {
+		calcTypeGoToBedTime.classList.add('active');
+		calcTypeWakeUpTime.classList.remove('active');
+		localStorage.setItem('calcType', 'calcByGoToBedTime');
+		otOrK.innerHTML = 'от';
+	});
+
+
+
+
 })
