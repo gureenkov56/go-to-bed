@@ -296,5 +296,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 		// dark mode
 		document.body.classList.add('dark');
+
+		// safari top bar on mobile
+		const safariBar = document.querySelector('[name="apple-mobile-web-app-status-bar-style"]');
+		safariBar.content = '#092552';
+
+		// theme color meta
+		const themeColor = document.querySelector('[name="theme-color"]');
+		themeColor.content = '#092552';
 	}
 })
