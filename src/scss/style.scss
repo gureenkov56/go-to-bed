@@ -8,8 +8,16 @@ $blueBase: rgba(68, 125, 218, 0.3);
 $oneCycle: 180px;
 
 
+/* Скрываем scrollbar для Chrome, Safari и Opera */
+body::-webkit-scrollbar {
+	display: none;
+}
 
 body {
+	/* Скрываем scrollbar для IE, Edge и Firefox */
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
 	margin: 0;
 	color: white;
 	background: $primaryBgcolor;
@@ -30,6 +38,28 @@ body {
 		justify-content: space-between;
 		padding: .3rem;
 		margin-bottom: 1rem;
+	}
+
+	&.dark {
+		.content-container {
+			background: linear-gradient(to top, #090022, #0b0d51, #4a2487, #092552)
+		}
+
+		.post__image {
+			background: linear-gradient(180deg, #0b3c8a 0, #644cbd 100%) !important;
+		}
+
+		.post-modal {
+			background: #192539;
+		}
+
+		.post-modal__header {
+			box-shadow: 0 5px 5px 0 #395076;
+		}
+
+		.modal__container {
+			background: linear-gradient(#4a2487, #092552);
+		}
 	}
 
 	.content-container {
@@ -619,7 +649,8 @@ body {
 					cursor: pointer;
 
 
-					h3, h4 {
+					h3,
+					h4 {
 						margin: 0;
 						padding: 140px 10px 0 10px;
 						text-align: left;
@@ -843,7 +874,8 @@ body {
 					padding: 0 10px;
 				}
 
-				ul, ol {
+				ul,
+				ol {
 					padding-inline-start: 40px;
 				}
 

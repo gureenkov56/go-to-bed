@@ -282,10 +282,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	calcCycle(timeStartSleeping);
 
 	/*****
-	 * X. ServiceWorker reg *
+	 * 6. ServiceWorker reg *
 	 */
 
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('serviceWorker.js');
+	}
+
+	/********
+	 * 7. Set dark/light mode
+	 */
+
+	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		// dark mode
+		document.body.classList.add('dark');
 	}
 })
