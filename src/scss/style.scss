@@ -133,6 +133,24 @@ body {
 					}
 				}
 			}
+
+			.reverse {
+				flex-direction: row-reverse;
+
+				.time {
+					&:last-child {
+						min-width: 120px;
+						text-align: left;
+						font-size: 1rem;
+					}
+
+					&:first-child {
+						font-size: 1rem;
+						min-width: 90px !important;
+						text-align: right !important;
+					}
+				}
+			}
 		}
 
 		&__wrapper {
@@ -766,6 +784,28 @@ body {
 			border-radius: 20px;
 			margin: 0 0 0 auto;
 			cursor: pointer;
+		}
+		
+		.calc-type {
+			max-width: 250px;
+			margin: 20px auto;
+			background-color: rgba(0,0,0,.2);
+			border-radius: 20px;
+			position: relative;
+
+			display: flex;
+			&__option {
+				flex: 1;
+				margin: 3px;
+				padding: 5px;
+				border-radius: 20px;
+				cursor: pointer;
+				transition: background-color .6s;
+
+				&.active {
+					background-color: $primaryBgcolor;
+				}
+			}
 		}
 
 		&__settings {
